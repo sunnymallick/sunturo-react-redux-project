@@ -10,6 +10,7 @@ const setUser = (user) => {
   };
 };
 
+// eslint-disable-next-line no-unused-vars
 const removeUser = () => {
   return {
     type: REMOVE_USER,
@@ -48,6 +49,14 @@ const sessionReducer = (state = initialState, action) => {
   }
 };
 
+export const restoreUser = () => async dispatch => {
+    const response = await csrfFetch('/api/session');
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  };
+
+
 export default sessionReducer;
 
 
@@ -65,10 +74,3 @@ export default sessionReducer;
 // // {
 // //     user: null
 // //   }
-
-// // export const restoreUser = () => async dispatch => {
-// //     const response = await csrfFetch('/api/session');
-// //     const data = await response.json();
-// //     dispatch(setUser(data.user));
-// //     return response;
-// //   };

@@ -1,7 +1,3 @@
-const BrowsePage = () => {
-    return (
-        <p> This is the browse page</p>
-    )
-}
+import BrowsePage from "./BrowsePage"
 
 export default BrowsePage

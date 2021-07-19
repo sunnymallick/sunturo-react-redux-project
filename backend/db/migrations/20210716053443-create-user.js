@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      age: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

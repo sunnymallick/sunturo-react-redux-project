@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 30],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
-            throw new Error('Cannot be an email.');
+            throw new Error('Username cannot be an email address.');
           }
         },
       },
@@ -29,6 +29,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [60, 60]
+      },
+    },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [2, 3]
       },
     },
   },

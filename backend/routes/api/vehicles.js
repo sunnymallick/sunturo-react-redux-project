@@ -4,7 +4,7 @@ const { Vehicle } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/browse', asyncHandler(async function (req, res) {
+router.get('/', asyncHandler(async function (req, res) {
     const vehicles = await Vehicle.findAll();
     return res.json(vehicles)
 }))

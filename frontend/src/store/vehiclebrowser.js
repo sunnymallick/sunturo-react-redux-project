@@ -10,7 +10,7 @@ const load = (vehicles) => ({
 
 export const getVehicles = () => async (dispatch) => {
     const res = await csrfFetch(`/api/vehicles`);
-    
+
     if (res.ok) {
         const vehicles = await res.json();
         dispatch(load(vehicles))

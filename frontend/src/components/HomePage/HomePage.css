@@ -1,7 +1,16 @@
-/* body {
+body {
     background-color: black;
 }
 
 p {
    color: white;
-} */
+}
+
+.form {
+    text-align: center;
+}
+
+.formInput {
+    display: inline-block;
+    padding: 2px;
+}

@@ -7,8 +7,8 @@ const HomePage = () => {
         <p>Welcome to SunTuro!</p>
         </div>
 
-        <div className='homeInput'>
-            <form>
+        <div className='form'>
+            <form className='formInput'>
                     <input type='text' name='location' placeholder='Location' />
                     <input type='datetime-local' name='from' placeholder='From'/>
                     <input type='datetime-local' name='to' placeholder='To' />

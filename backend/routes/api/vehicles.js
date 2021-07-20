@@ -10,7 +10,7 @@ router.get('/', asyncHandler(async function (req, res) {
 }))
 
 router.get('/:id', asyncHandler(async function(req, res) {
-    const { vehicleId } = req.params.id;
+    const vehicleId = req.params.id;
     const oneVehicle = await Vehicle.findByPk(vehicleId);
 
     return res.json(oneVehicle)

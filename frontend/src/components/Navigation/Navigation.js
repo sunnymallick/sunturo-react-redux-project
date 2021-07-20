@@ -15,20 +15,22 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink className='nav' to="/login">Log In</NavLink>
+        <NavLink className='nav' to="/signup">Sign Up</NavLink>
       </>
     );
   }
 
   return (
+    <div className='navbar'>
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink to='/browse'>Browse</NavLink>
+        <NavLink className='nav' exact to="/">Home</NavLink>
+        <NavLink className='nav' to='/browse'>Browse</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    </div>
   );
 }
 

@@ -2,10 +2,20 @@ import "./HomePage.css"
 
 const HomePage = () => {
     return (
-        <p>Welcome to the HomePage</p>
-        // <div>
-        // <img src='../../images/shelby-homepage.jpg' alt='shelbypic' />
-        // </div>
+    <>
+        <div>
+        <p>Welcome to SunTuro!</p>
+        </div>
+
+        <div className='homeInput'>
+            <form>
+                    <input type='text' name='location' placeholder='Location' />
+                    <input type='datetime-local' name='from' placeholder='From'/>
+                    <input type='datetime-local' name='to' placeholder='To' />
+            </form>
+        </div>
+
+    </>
     )
 }
 

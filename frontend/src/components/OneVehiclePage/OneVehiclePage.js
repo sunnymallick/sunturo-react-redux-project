@@ -16,7 +16,7 @@ const OneVehiclePage = () => {
 
     return (
        <div>
-           <h2>Individual page</h2>
+        <p>{vehicle.year} {vehicle.make} {vehicle.model}</p>
        </div>
     )
 }

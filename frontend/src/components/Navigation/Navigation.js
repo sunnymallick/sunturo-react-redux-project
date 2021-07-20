@@ -26,7 +26,7 @@ const Navigation = ({ isLoaded }) => {
     <ul>
       <li>
         <NavLink className='nav' exact to="/">Home</NavLink>
-        <NavLink className='nav' to='/browse'>Browse</NavLink>
+        <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

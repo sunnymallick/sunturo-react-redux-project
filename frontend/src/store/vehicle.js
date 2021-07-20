@@ -17,6 +17,14 @@ export const getVehicles = () => async (dispatch) => {
     }
 }
 
+export const getOneVehicle = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/vehicles/${id}`)
+
+    if (res.ok) {
+        const oneVehicle = await res.json();
+        dispatch(getOneVehicle(oneVehicle))
+    }
+}
 
 const vehiclesReducer = (state = {}, action) => {
     switch (action.type) {

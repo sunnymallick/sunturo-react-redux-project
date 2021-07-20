@@ -27,10 +27,10 @@ function App() {
           <Route path='/vehicles' exact>
             <VehiclesPage />
           </Route>
-          <Route path='/login'>
+          <Route path='/login' exact>
             <LoginFormPage />
           </Route>
-          <Route path='/signup'>
+          <Route path='/signup' exact>
             <SignupFormPage />
           </Route>
           <Route path='/vehicles/:id' exact>

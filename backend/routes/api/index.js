@@ -9,7 +9,6 @@ router.use('/users', usersRouter);
 
 router.use('/vehicles', vehicleRouter);
 
-
 module.exports = router;
 
 // const asyncHandler = require('express-async-handler');

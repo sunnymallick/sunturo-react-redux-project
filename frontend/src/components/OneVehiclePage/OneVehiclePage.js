@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
 import { getOneVehicle } from '../../store/vehicle';
 
 const OneVehiclePage = () => {
-    const dispatch = useDispatch();
     const { vehicleId } = useParams();
+    console.log(vehicleId)
+    const dispatch = useDispatch();
+    const vehicle = useSelector(state => state.vehicles[vehicleId])
 
-    useDispatch(() => {
+
+    useEffect(() => {
         dispatch(getOneVehicle(vehicleId))
-    }, [dispatch])
+    }, [dispatch, vehicleId])
 
     return (
-        <p>this is the one vehicle page</p>
+       <p>Individual Page </p>
     )
 }
 

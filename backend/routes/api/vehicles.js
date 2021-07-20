@@ -15,4 +15,5 @@ router.get('/:id', asyncHandler(async function(req, res) {
 
     return res.json(oneVehicle)
 }))
+
 module.exports = router;

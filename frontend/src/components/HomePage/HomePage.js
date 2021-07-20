@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./HomePage.css"
 
 const HomePage = () => {
@@ -15,6 +16,16 @@ const HomePage = () => {
             </form>
         </div>
 
+        <div className='bio'>
+            <h3>The World's Smallest Car Sharing Marketplace </h3>
+        </div>
+
+        <div className='browse'>
+            <h5>Browse By Make</h5>
+            <Link to='/vehicles'>
+            <button type='button' className='browseButton'>Browse Cars</button>
+            </Link>
+        </div>
     </>
     )
 }

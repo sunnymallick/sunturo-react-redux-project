@@ -1,32 +1,33 @@
 import { csrfFetch } from "./csrf";
 
-const SET_VEHICLES = 'vehicles/SET_VEHICLES';
+const LOAD = 'vehicles/LOAD';
 
-const setVehicles = (vehicles) => ({
-    type: SET_VEHICLES,
+//action creator
+const load = (vehicles) => ({
+    type: LOAD,
     vehicles
 })
 
 export const getVehicles = () => async (dispatch) => {
-    const res = await csrfFetch('/api/vehicles');
-
+    const res = await csrfFetch(`/api/vehicles`);
+    
     if (res.ok) {
         const vehicles = await res.json();
-        console.log('test')
-        dispatch(setVehicles(vehicles))
-        return vehicles;
+        dispatch(load(vehicles))
     }
 }
 
 
 const vehiclesReducer = (state = {}, action) => {
-    let obj = {};
     switch (action.type) {
-        case SET_VEHICLES:
-            action.vehicles.forEach(vehicleObj => {
-                obj[vehicleObj.id] = vehicleObj;
-            })
-                return {...state, ...obj};
+        case LOAD:
+            const allVehicles = {
+                ...state,
+            };
+            action.vehicles.forEach((vehicle) => {
+                allVehicles[vehicle.id] = vehicle;
+            });
+            return allVehicles;
         default:
             return state;
     }

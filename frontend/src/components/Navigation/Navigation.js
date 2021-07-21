@@ -13,6 +13,7 @@ const Navigation = ({ isLoaded }) => {
     <>
         <NavLink className='nav' to='/'>Become a Host</NavLink>
         <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
+        <p className='nav'>Welcome {sessionUser.username}</p>
         <ProfileButton user={sessionUser} />
     </>
     );

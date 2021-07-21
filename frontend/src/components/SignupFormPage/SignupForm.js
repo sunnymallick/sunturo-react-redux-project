@@ -9,7 +9,7 @@ const SignupFormPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -39,6 +39,7 @@ const SignupFormPage = () => {
         <input
           type="text"
           value={email}
+          placeholder='ex: example@email.com'
           onChange={(e) => setEmail(e.target.value)}
           required
         />
@@ -48,6 +49,7 @@ const SignupFormPage = () => {
         <input
           type="text"
           value={username}
+          placeholder='Enter a username'
           onChange={(e) => setUsername(e.target.value)}
           required
         />
@@ -66,6 +68,7 @@ const SignupFormPage = () => {
         <input
           type="password"
           value={password}
+          placeholder='Password must be 6 characters or longer'
           onChange={(e) => setPassword(e.target.value)}
           required
         />

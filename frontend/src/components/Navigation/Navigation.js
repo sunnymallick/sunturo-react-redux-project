@@ -10,7 +10,11 @@ const Navigation = ({ isLoaded }) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+    <>
+        <NavLink className='nav' to='/'>Become a Host</NavLink>
+        <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
+        <ProfileButton user={sessionUser} />
+    </>
     );
   } else {
     sessionLinks = (
@@ -25,8 +29,6 @@ const Navigation = ({ isLoaded }) => {
     <div className='navbar'>
     <ul>
       <li>
-        <NavLink className='nav' exact to="/">Home</NavLink>
-        <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

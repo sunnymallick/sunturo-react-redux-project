@@ -10,7 +10,7 @@ const HomePage = () => {
     if (sessionUser) {
         sessionLinks = (
             <Link to='/vehicles'>
-                <button type='button'>Browse our selection</button>
+                <button type='button'>Click here to browse our selection</button>
             </Link>
         )
     } else {

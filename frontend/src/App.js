@@ -5,7 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
 import VehiclesPage from "./components/VehiclesPage";
-import OneVehiclePage from "./components/OneVehiclePage";
+import VehicleBooking from "./components/VehicleBooking";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -34,7 +34,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/vehicles/:id' exact>
-            <OneVehiclePage />
+            <VehicleBooking />
           </Route>
           <Route path='/'>
             <p>404 Not Found</p>

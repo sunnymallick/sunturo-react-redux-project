@@ -8,7 +8,8 @@ const VehicleBooking = () => {
     const { id } = useParams();
     // console.log(id)
     const vehicle = useSelector((state) => state.vehicles[id])
-
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     useEffect(() => {
         dispatch(getOneVehicle(id))
     }, [dispatch, id])
@@ -24,7 +25,9 @@ const VehicleBooking = () => {
 
         <p>{vehicle?.description}</p>
        </div>
-
+        <div className='reviews'>
+            {/* insert reviews here pulled from database */}
+        </div>
         <div className='booking'>
             <form>
                 <label>Trip Start: </label>

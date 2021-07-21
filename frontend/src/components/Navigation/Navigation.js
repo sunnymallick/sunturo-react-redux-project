@@ -20,6 +20,7 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
+        <NavLink className='nav' to='/'>Home</NavLink>
         <NavLink className='nav' to="/login">Log In</NavLink>
         <NavLink className='nav' to="/signup">Sign Up</NavLink>
       </>

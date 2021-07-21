@@ -28,9 +28,15 @@ const VehiclesPage = () => {
         )
     } else {
         sessionLinks = (
+            <>
+            <p>Please login to see our selection of vehicles</p>
             <Link to='/login'>
-                <button type='button'>Please login to see our selection of vehicles</button>
+                <button type='button'>Login</button>
             </Link>
+            <Link to='/signup'>
+                <button type='button'>Signup</button>
+            </Link>
+            </>
         )
     }
 

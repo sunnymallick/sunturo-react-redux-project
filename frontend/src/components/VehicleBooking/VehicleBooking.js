@@ -13,36 +13,38 @@ const VehicleBooking = () => {
     const [endDate, setEndDate] = useState('');
 
     let sessionLinks;
-    console.log(sessionUser)
-    if (sessionUser.age >= 25) {
-        sessionLinks = (
-            <form>
-                <label>Trip Start: </label>
-                <input
-                    type='date'
-                    placeholder='From'
-                    required/>
-                <input
-                    type='time'
-                    required />
-                    <br></br>
-                <label>Trip End:</label>
-                <input
-                    type='date'
-                    placeholder='To'
-                    required/>
-                <input
-                    type='time'
-                    required />
-                    <br></br>
-                <button type='submit'>Continue</button>
-            </form>
-        )
-    } else {
-        sessionLinks = (
-        <p>This vehicle has an age restriction.</p>
+    console.log(vehicle.ageRestriction)
+    if (sessionUser) {
+            if (!(vehicle.ageRestriction && sessionUser.age < 25)) {
+                sessionLinks = (
+                    <form>
+                        <label>Trip Start: </label>
+                        <input
+                            type='date'
+                            placeholder='From'
+                            required/>
+                        <input
+                            type='time'
+                            required />
+                            <br></br>
+                        <label>Trip End:</label>
+                        <input
+                            type='date'
+                            placeholder='To'
+                            required/>
+                        <input
+                            type='time'
+                            required />
+                            <br></br>
+                        <button type='submit'>Continue</button>
+                    </form>
+                )
+        } else {
+            sessionLinks = (
+            <p>This vehicle has an age restriction.</p>
         )
     }
+}
 
     useEffect(() => {
         dispatch(getOneVehicle(id))

@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Vehicle } = require('../../db/models');
+const { Vehicle, Review } = require('../../db/models');
+const { check, validationResult } = require('express-validator')
 
 const router = express.Router();
 
@@ -16,4 +17,16 @@ router.get('/:id', asyncHandler(async function(req, res) {
     return res.json(oneVehicle)
 }))
 
+
+router.post('/:id', asyncHandler(async function(req, res) {
+    const { review, rating } = req.body
+    const vehicleId = req.params.id;
+    const vehicle = await Vehicle.findByPk(vehicleId);
+    const userId = req.session.auth.userId
+
+    await Review.create({
+        userId = userId,
+        
+    })
+}))
 module.exports = router;

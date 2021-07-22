@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneVehicle } from '../../store/vehicle';
+import { getOneVehicle, reviewVehicle } from '../../store/vehicle';
+import { useHistory } from 'react-router-dom';
 
 const VehicleBooking = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const history = useHistory();
     // console.log(id)
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
+    const [review, setReview] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const payload = {
+            review
+        }
+        let createdReview = await dispatch(reviewVehicle(payload))
+
+        if (createdReview) {
+            history.pushState(`/vehicles/${id}`)
+        }
+    }
+
     let sessionLinks;
-    console.log(vehicle.ageRestriction)
+    console.log(vehicle?.ageRestriction)
     if (sessionUser) {
-            if (!(vehicle.ageRestriction && sessionUser.age < 25)) {
+            if (!(vehicle?.ageRestriction && sessionUser?.age < 25)) {
                 sessionLinks = (
                     <form>
                         <label>Trip Start: </label>
@@ -48,6 +63,7 @@ const VehicleBooking = () => {
 
     useEffect(() => {
         dispatch(getOneVehicle(id))
+        dispatch(reviewVehicle(id))
     }, [dispatch, id])
 
     return (
@@ -65,6 +81,16 @@ const VehicleBooking = () => {
 
         <div className='reviews'>
             {/* insert reviews here pulled from database */}
+            {/* <p>{reviews?.rating}</p> */}
+            <form onSubmit={handleSubmit}>
+                <input
+                    type='text'
+                    placeholder='leave a review'
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    />
+            </form>
+            <button type='submit'>Submit Review</button>
         </div>
         <div className='booking'>
             {sessionLinks}

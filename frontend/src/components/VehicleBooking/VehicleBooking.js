@@ -72,7 +72,7 @@ const VehicleBooking = () => {
                             onChange={(e) => setRating(e.target.value)}
                         </select>
                     </form>
-                    <button type='submit'>Submit Review</button>
+                    <button type='submit' onClick={handleSubmit}>Submit Review</button>
                 </div>
                 </>
                 )

@@ -31,7 +31,7 @@ router.post('/:id', asyncHandler(async function(req, res) {
         rating: rating
     })
 
-    res.redirect('/${id}')
+    res.redirect(`/:id`)
 }))
 
 module.exports = router;

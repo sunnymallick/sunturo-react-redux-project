@@ -19,9 +19,11 @@ const VehiclesPage = () => {
         vehicles.map(vehicle => {
             if (vehicle.id) {
                     return (
-                     <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
+                    <div>
+                        <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
                             <h5>{vehicle.year} {vehicle.make} {vehicle.model}</h5>
-                     </Link>
+                        </Link>
+                    </div>
                     )
                 }
             })

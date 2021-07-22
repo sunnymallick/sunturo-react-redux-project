@@ -20,7 +20,7 @@ router.get('/:id', asyncHandler(async function(req, res) {
 router.post('/:id', restoreUser, asyncHandler(async function(req, res) {
     const { review, rating } = req.body
     const vehicleId = req.params.id
-    const userId = req.user
+    const userId = req.user.id
 
     await Review.create({
         vehicleId: vehicleId,
@@ -29,7 +29,7 @@ router.post('/:id', restoreUser, asyncHandler(async function(req, res) {
         rating: rating
     })
 
-    res.redirect(`/:id`)
+    return res.redirect(`/vehicles`)
 }))
 
 module.exports = router;

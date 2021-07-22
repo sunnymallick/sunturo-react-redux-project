@@ -10,6 +10,7 @@ const VehicleBooking = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
+    const reviews = useSelector((state) => state.reviews[vehicle.id])
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');
@@ -23,7 +24,7 @@ const VehicleBooking = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.pushState(`/vehicles/${id}`)
+            history.push(`/vehicles/${id}`)
         }
     }
 
@@ -106,8 +107,8 @@ const VehicleBooking = () => {
         </div>
 
         <div className='reviews'>
-                <p>{review.review}</p>
-                <p>{review.rating}</p>
+                <p>{reviews.review}</p>
+                <p>{reviews.rating}</p>
         </div>
     </>
     )

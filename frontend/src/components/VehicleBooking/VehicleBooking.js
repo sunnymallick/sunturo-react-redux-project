@@ -11,8 +11,8 @@ const VehicleBooking = () => {
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    // const [startDate, setStartDate] = useState('');
+    // const [endDate, setEndDate] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {

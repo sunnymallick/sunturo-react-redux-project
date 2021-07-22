@@ -18,19 +18,20 @@ router.get('/:id', asyncHandler(async function(req, res) {
 }))
 
 router.post('/:id', asyncHandler(async function(req, res) {
-    // const { review, rating } = req.body
+    const { review, rating } = req.body
+    const vehicleId = req.params.id
     // const vehicle = await Vehicle.findByPk(vehicleId);
-    // const userId = req.session.auth.userId
-    const id = await Review.create(req.body)
+    const userId = req.session.auth.userId
+    // const id = await Review.create(req.body)
 
-    // await Review.create({
-    //     vehicleId: vehicleId,
-    //     userId: userId,
-    //     review: review,
-    //     rating: rating
-    // })
+    await Review.create({
+        vehicleId: vehicleId,
+        userId: userId,
+        review: review,
+        rating: rating
+    })
 
-   return res.redirect('/${id}')
+    res.redirect('/${id}')
 }))
 
 module.exports = router;

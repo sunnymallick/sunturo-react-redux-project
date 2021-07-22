@@ -11,12 +11,14 @@ const VehicleBooking = () => {
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState('');
+    const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');
     // const [endDate, setEndDate] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
-            review
+            review,
+            rating
         }
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
@@ -60,6 +62,15 @@ const VehicleBooking = () => {
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                             />
+                        <select>
+                            <option value='5'>5</option>
+                            <option value='4'>4</option>
+                            <option value='3'>3</option>
+                            <option value='2'>2</option>
+                            <option value='1'>1</option>
+                            value={rating}
+                            onChange={(e) => setRating(e.target.value)}
+                        </select>
                     </form>
                     <button type='submit'>Submit Review</button>
                 </div>
@@ -95,9 +106,8 @@ const VehicleBooking = () => {
         </div>
 
         <div className='reviews'>
-            <textarea>
                 <p>{review.review}</p>
-            </textarea>
+                <p>{review.rating}</p>
         </div>
     </>
     )

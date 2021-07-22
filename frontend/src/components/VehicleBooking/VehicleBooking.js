@@ -10,7 +10,7 @@ const VehicleBooking = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    const reviews = useSelector((state) => state.reviews[vehicle.id])
+    const reviews = useSelector((state) => state.reviews)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');
@@ -63,14 +63,12 @@ const VehicleBooking = () => {
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                             />
-                        <select>
+                        <select value={rating} onChange={(e) => setRating(e.target.value)}>
                             <option value='5'>5</option>
                             <option value='4'>4</option>
                             <option value='3'>3</option>
                             <option value='2'>2</option>
                             <option value='1'>1</option>
-                            value={rating}
-                            onChange={(e) => setRating(e.target.value)}
                         </select>
                     </form>
                     <button type='submit' onClick={handleSubmit}>Submit Review</button>
@@ -106,10 +104,10 @@ const VehicleBooking = () => {
             {sessionLinks}
         </div>
 
-        <div className='reviews'>
+        {/* <div className='reviews'>
                 <p>{reviews.review}</p>
                 <p>{reviews.rating}</p>
-        </div>
+        </div> */}
     </>
     )
 }

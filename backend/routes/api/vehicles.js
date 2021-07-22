@@ -29,7 +29,7 @@ router.post('/:id', restoreUser, asyncHandler(async function(req, res) {
         rating: rating
     })
 
-    return res.redirect(`/vehicles`)
+    res.redirect(`/vehicles/:${vehicleId}`)
 }))
 
 module.exports = router;

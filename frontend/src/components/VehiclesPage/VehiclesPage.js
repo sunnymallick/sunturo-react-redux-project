@@ -42,18 +42,17 @@ const VehiclesPage = () => {
         )
     }
 
-    return (
+    let ageWarning;
+       if (sessionUser?.age < 25) {
+           ageWarning = (
+           <p>***Some vehicles are unavailable due to your age restriction.</p>
+           )
+       }
+
+       return (
 
         <div>
-            {/* {vehicles.map(vehicle => {
-                if (vehicle.id) {
-                    return (
-                        <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
-                            <h5>{vehicle.year} {vehicle.make} {vehicle.model}</h5>
-                        </Link>
-                    )
-                }
-            })} */}
+            {ageWarning}
             {sessionLinks}
             <p></p>
         </div>

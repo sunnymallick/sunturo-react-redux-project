@@ -8,19 +8,17 @@ const VehicleBooking = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const history = useHistory();
-    // console.log(id)
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
             review
         }
-        let createdReview = await dispatch(reviewVehicle(payload))
+        let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
             history.pushState(`/vehicles/${id}`)
@@ -28,10 +26,10 @@ const VehicleBooking = () => {
     }
 
     let sessionLinks;
-    console.log(vehicle?.ageRestriction)
     if (sessionUser) {
             if (!(vehicle?.ageRestriction && sessionUser?.age < 25)) {
                 sessionLinks = (
+                    <>
                     <form>
                         <label>Trip Start: </label>
                         <input
@@ -53,6 +51,19 @@ const VehicleBooking = () => {
                             <br></br>
                         <button type='submit'>Continue</button>
                     </form>
+
+                    <div className='reviews'>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type='text'
+                            placeholder='leave a review'
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                            />
+                    </form>
+                    <button type='submit'>Submit Review</button>
+                </div>
+                </>
                 )
         } else {
             sessionLinks = (
@@ -63,7 +74,6 @@ const VehicleBooking = () => {
 
     useEffect(() => {
         dispatch(getOneVehicle(id))
-        dispatch(reviewVehicle(id))
     }, [dispatch, id])
 
     return (
@@ -79,42 +89,15 @@ const VehicleBooking = () => {
 
        </div>
 
-        <div className='reviews'>
-            {/* insert reviews here pulled from database */}
-            {/* <p>{reviews?.rating}</p> */}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    placeholder='leave a review'
-                    value={review}
-                    onChange={(e) => setReview(e.target.value)}
-                    />
-            </form>
-            <button type='submit'>Submit Review</button>
-        </div>
+
         <div className='booking'>
             {sessionLinks}
-            {/* <form>
-                <label>Trip Start: </label>
-                <input
-                    type='date'
-                    placeholder='From'
-                    required/>
-                <input
-                    type='time'
-                    required />
-                    <br></br>
-                <label>Trip End:</label>
-                <input
-                    type='date'
-                    placeholder='To'
-                    required/>
-                <input
-                    type='time'
-                    required />
-                    <br></br>
-                <button type='submit'>Continue</button>
-            </form> */}
+        </div>
+
+        <div className='reviews'>
+            <textarea>
+                <p>{review.review}</p>
+            </textarea>
         </div>
     </>
     )

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import { getOneVehicle, reviewVehicle } from '../../store/vehicle';
+import { getOneVehicle } from '../../store/vehicle';
 import { useHistory } from 'react-router-dom';
+import { reviewVehicle } from '../../store/review';
 
 const VehicleDetail = () => {
     const dispatch = useDispatch();
@@ -10,8 +11,6 @@ const VehicleDetail = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    const reviews = vehicle?.Review
-    console.log(reviews)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');
@@ -106,11 +105,11 @@ const VehicleDetail = () => {
         <div className='booking'>
             {sessionLinks}
         </div>
-
+{/* 
         <div className='reviews'>
                 <p>{reviews?.review}</p>
                 <p>{reviews?.rating}</p>
-        </div>
+        </div> */}
     </>
     )
 }

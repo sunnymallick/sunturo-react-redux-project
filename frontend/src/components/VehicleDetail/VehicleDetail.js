@@ -13,7 +13,6 @@ const VehicleDetail = () => {
     const sessionUser = useSelector(state => state.session.user);
     // const reviews = useSelector((state) => state.reviews.reviews)
     const reviews = useSelector((state) => (Object.values(state.reviews)))
-    console.log(reviews)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');

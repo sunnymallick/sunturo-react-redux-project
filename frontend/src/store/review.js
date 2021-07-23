@@ -41,6 +41,13 @@ export const reviewVehicle = (id, payload) => async (dispatch) => {
 
 const reviewReducer = (state = {}, action) => {
     switch(action.type) {
+        case LOAD: {
+            const allReviews = {};
+            action.reviews.forEach((review) => {
+                allReviews[review.id] = review
+            });
+            return allReviews
+        }
         case SET_REVIEW: {
             const newState = {
                 ...state,

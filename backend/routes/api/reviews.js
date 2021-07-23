@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/:id', restoreUser, asyncHandler(async function (req, res) {
     const reviews = await Review.findAll({
-        include: Vehicle
+        include: Vehicle.id
     })
     return res.json(reviews)
 }))

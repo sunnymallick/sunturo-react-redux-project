@@ -5,9 +5,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
 import VehiclesPage from "./components/VehiclesPage";
-import VehicleBooking from "./components/VehicleBooking";
+import VehicleDetail from "./components/VehicleDetail";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import BookingsPage from "./components/BookingsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,10 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/vehicles/:id' exact>
-            <VehicleBooking />
+            <VehicleDetail />
+          </Route>
+          <Route path='/vehicles/:id/bookings' exact>
+            <BookingsPage />
           </Route>
           <Route path='/'>
             <p>404 Not Found</p>

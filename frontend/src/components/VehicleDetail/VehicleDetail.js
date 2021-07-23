@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getOneVehicle, reviewVehicle } from '../../store/vehicle';
 import { useHistory } from 'react-router-dom';
 
-const VehicleBooking = () => {
+const VehicleDetail = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    const reviews = useSelector((state) => state.reviews)
+    const reviews = useSelector((state) => state.vehicles.review)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');
@@ -24,7 +24,7 @@ const VehicleBooking = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.push(`/vehicles`)
+            history.push(`/vehicles/${id}`)
         }
     }
 
@@ -52,7 +52,9 @@ const VehicleBooking = () => {
                             type='time'
                             required />
                             <br></br>
-                        <button type='submit'>Continue</button>
+                        <Link to={`/vehicles/${id}/bookings`}>
+                            <button type='submit'>Continue</button>
+                        </Link>
                     </form>
 
                     <div className='reviews'>
@@ -104,12 +106,12 @@ const VehicleBooking = () => {
             {sessionLinks}
         </div>
 
-        {/* <div className='reviews'>
-                <p>{reviews.review}</p>
-                <p>{reviews.rating}</p>
-        </div> */}
+        <div className='reviews'>
+                <p>{reviews?.review}</p>
+                <p>{reviews?.rating}</p>
+        </div>
     </>
     )
 }
 
-export default VehicleBooking;
+export default VehicleDetail;

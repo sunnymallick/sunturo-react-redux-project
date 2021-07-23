@@ -23,6 +23,12 @@ module.exports = {
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
         age: 42
       },
+      {
+        email: 'sunny@sunny.com',
+        username: 'sunny',
+        hashedPassword: bcrypt.hashSync('sunnys'),
+        age: 36
+      }
     ], {});
   },
 

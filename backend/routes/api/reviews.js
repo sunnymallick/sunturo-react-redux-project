@@ -5,14 +5,14 @@ const { restoreUser } = require('../../utils/auth')
 
 const router = express.Router();
 
-router.get('/', restoreUser, asyncHandler(async function (req, res) {
+router.get('/:id', restoreUser, asyncHandler(async function (req, res) {
     const reviews = await Review.findAll({
         include: Vehicle
     })
     return res.json(reviews)
 }))
 
-router.post('/', restoreUser, asyncHandler(async function(req, res) {
+router.post('/:id', restoreUser, asyncHandler(async function(req, res) {
     const { review, rating } = req.body
     const vehicleId = req.params.id
     const userId = req.user.id

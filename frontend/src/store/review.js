@@ -1,16 +1,31 @@
 import { csrfFetch } from "./csrf";
 
-const SET_REVIEW = 'vehicles/SET_REVIEW'
+const LOAD = 'reviews/LOAD'
+const SET_REVIEW = 'reviews/SET_REVIEW'
 
 
-const setReview = (vehicle) => ({
-    type: SET_REVIEW,
-    vehicle
+const loadReviews = (reviews) => ({
+    type: LOAD,
+    reviews
 })
+
+const setReview = (reviews) => ({
+    type: SET_REVIEW,
+    reviews
+})
+
+export const getReviews = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${id}`)
+
+    if (res.ok) {
+        const reviews = await res.json();
+        dispatch(loadReviews(reviews));
+    }
+}
 
 
 export const reviewVehicle = (id, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/vehicles/${id}`, {
+    const res = await csrfFetch(`/api/reviews/${id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -19,6 +34,7 @@ export const reviewVehicle = (id, payload) => async (dispatch) => {
     if (res.ok) {
         const newReview = await res.json();
         dispatch(setReview(newReview))
+        return newReview;
     }
 }
 

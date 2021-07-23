@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getOneVehicle } from '../../store/vehicle';
 import { useHistory } from 'react-router-dom';
-import { reviewVehicle } from '../../store/review';
+import { reviewVehicle, getReviews } from '../../store/review';
 
 const VehicleDetail = () => {
     const dispatch = useDispatch();
@@ -13,6 +13,7 @@ const VehicleDetail = () => {
     const sessionUser = useSelector(state => state.session.user);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
+    // const reviews = useSelector((state) => state.reviews)
     // const [startDate, setStartDate] = useState('');
     // const [endDate, setEndDate] = useState('');
     const handleSubmit = async (e) => {
@@ -86,6 +87,7 @@ const VehicleDetail = () => {
 
     useEffect(() => {
         dispatch(getOneVehicle(id))
+        dispatch(getReviews(id))
     }, [dispatch, id])
 
     return (
@@ -105,7 +107,7 @@ const VehicleDetail = () => {
         <div className='booking'>
             {sessionLinks}
         </div>
-{/* 
+{/*
         <div className='reviews'>
                 <p>{reviews?.review}</p>
                 <p>{reviews?.rating}</p>

@@ -11,12 +11,19 @@ const VehicleDetail = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    // const reviews = useSelector((state) => state.reviews.reviews)
-    const reviews = useSelector((state) => (Object.values(state.reviews)))
+    // const reviews = useSelector((state) => state.Review.reviews)
+    const reviews = useSelector((state) => ((Object.values(state.reviews))))
+    const listingReviews = reviews.filter(review => review.Vehicle.id === +id);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');
     // const [endDate, setEndDate] = useState('');
+    console.log(listingReviews)
+    // const sortReviews = listingReviews.sort(() => (a, b) => {
+    //     return b.id - a.id;
+    // })
+
+    // console.log(sortReviews)
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
@@ -86,6 +93,15 @@ const VehicleDetail = () => {
     }
 }
 
+    // console.log(sessionUser.id)
+    // console.log(listingReviews.User.id)
+    // let sessionButtons;
+    // if (sessionUser.id === listingReviews.User.id) {
+    //     sessionButtons = (
+    //         <button type='button'>Delete</button>
+    //     )
+    // }
+
     useEffect(() => {
         dispatch(getOneVehicle(id))
         dispatch(getReviews(id))
@@ -109,9 +125,28 @@ const VehicleDetail = () => {
             {sessionLinks}
         </div>
 
+        <h5>Comments</h5>
         <div className='reviews'>
-                <p>{reviews?.review}</p>
-                <p>{reviews?.rating}</p>
+               {listingReviews.map((review) => {
+                   return (
+                       <>
+                        <div>
+                        <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
+                        </div>
+                        <div>
+                        {review.review}
+                        </div>
+                        <div>
+                        {sessionUser && sessionUser.id === review.User.id &&
+                            <>
+                            <button type='button'>Edit</button>
+                            <button type='button'>Delete</button>
+                            </>
+                        }
+                        </div>
+                       </>
+                   )
+               })}
         </div>
     </>
     )

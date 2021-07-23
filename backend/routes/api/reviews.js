@@ -1,13 +1,13 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Vehicle, Review } = require('../../db/models');
+const { Vehicle, Review, User } = require('../../db/models');
 const { restoreUser } = require('../../utils/auth')
 
 const router = express.Router();
 
 router.get('/:id', restoreUser, asyncHandler(async function (req, res) {
     const reviews = await Review.findAll({
-        include: Vehicle.id
+        include: ['Vehicle', 'User']
     })
     return res.json(reviews)
 }))

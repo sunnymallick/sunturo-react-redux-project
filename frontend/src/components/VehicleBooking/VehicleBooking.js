@@ -24,7 +24,7 @@ const VehicleBooking = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.push(`/vehicles/${id}`)
+            history.push(`/vehicles`)
         }
     }
 

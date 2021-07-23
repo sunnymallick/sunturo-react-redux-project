@@ -67,7 +67,7 @@ const vehiclesReducer = (state = {}, action) => {
         case SET_REVIEW: {
                 const newState = {
                     ...state,
-                    [action.vehicles.id]: action.vehicles
+                    [action?.vehicles?.id]: action.vehicles
                 }
                 return newState
         }

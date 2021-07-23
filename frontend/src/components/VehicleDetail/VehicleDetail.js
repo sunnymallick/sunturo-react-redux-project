@@ -10,7 +10,8 @@ const VehicleDetail = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    const reviews = useSelector((state) => state.vehicles.review)
+    const reviews = vehicle?.Review
+    console.log(reviews)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
     // const [startDate, setStartDate] = useState('');

@@ -17,7 +17,7 @@ const VehiclesPage = () => {
     if (sessionUser) {
         sessionLinks = (
         vehicles.map(vehicle => {
-            if (vehicle.id) {
+            if (vehicle?.id) {
                     return (
                     <div>
                         <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>

@@ -11,9 +11,11 @@ const VehicleDetail = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
+    // const reviews = useSelector((state) => state.reviews.reviews)
+    const reviews = useSelector((state) => (Object.values(state.reviews)))
+    console.log(reviews)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
-    // const reviews = useSelector((state) => state.reviews)
     // const [startDate, setStartDate] = useState('');
     // const [endDate, setEndDate] = useState('');
     const handleSubmit = async (e) => {
@@ -107,11 +109,11 @@ const VehicleDetail = () => {
         <div className='booking'>
             {sessionLinks}
         </div>
-{/*
+
         <div className='reviews'>
                 <p>{reviews?.review}</p>
                 <p>{reviews?.rating}</p>
-        </div> */}
+        </div>
     </>
     )
 }

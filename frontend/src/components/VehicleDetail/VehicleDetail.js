@@ -25,16 +25,16 @@ const VehicleDetail = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.push(`/vehicles/${id}`)
+            history.push(`/vehicles`)
         }
     }
 
     const handleDelete = (id) => {
-        let deletedComment = dispatch(removeReview(id))
-
-        if(deletedComment) {
-            history.push(`/vehicles/`)
-        }
+        dispatch(removeReview(id))
+        history.push(`/vehicles`)
+        // if(deletedComment) {
+        //     history.push(`/vehicles`)
+        // }
     }
 
     let sessionLinks;
@@ -112,7 +112,7 @@ const VehicleDetail = () => {
        <div>
         <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
-        <p>Hosted by  </p>
+        <p>Hosted by {vehicle.User.username} </p>
 
         <p>Price: ${vehicle?.price} per day</p>
 

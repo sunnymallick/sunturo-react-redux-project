@@ -63,6 +63,13 @@ export const editReview = (id, payload) => async (dispatch) => {
     }
 }
 
+export const removeReview = (id) => async (dispatch) => {
+    const deleted = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'DELETE',
+    })
+        dispatch(deleteReview())
+        return deleted;
+}
 
 const reviewReducer = (state = {}, action) => {
     switch(action.type) {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getOneVehicle } from '../../store/vehicle';
 import { useHistory } from 'react-router-dom';
-import { reviewVehicle, getReviews } from '../../store/review';
+import { reviewVehicle, getReviews, editReview, removeReview } from '../../store/review';
 
 const VehicleDetail = () => {
     const dispatch = useDispatch();
@@ -11,19 +11,11 @@ const VehicleDetail = () => {
     const history = useHistory();
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    // const reviews = useSelector((state) => state.Review.reviews)
     const reviews = useSelector((state) => ((Object.values(state.reviews))))
-    const listingReviews = reviews.filter(review => review.Vehicle.id === +id);
+    const listingReviews = reviews.filter(review => review?.Vehicle?.id === +id);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(1);
-    // const [startDate, setStartDate] = useState('');
-    // const [endDate, setEndDate] = useState('');
-    console.log(listingReviews)
-    // const sortReviews = listingReviews.sort(() => (a, b) => {
-    //     return b.id - a.id;
-    // })
 
-    // console.log(sortReviews)
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
@@ -34,6 +26,14 @@ const VehicleDetail = () => {
 
         if (createdReview) {
             history.push(`/vehicles/${id}`)
+        }
+    }
+
+    const handleDelete = (id) => {
+        let deletedComment = dispatch(removeReview(id))
+
+        if(deletedComment) {
+            history.push(`/vehicles/`)
         }
     }
 
@@ -112,7 +112,7 @@ const VehicleDetail = () => {
        <div>
         <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
-        <p>Hosted by </p>
+        <p>Hosted by  </p>
 
         <p>Price: ${vehicle?.price} per day</p>
 
@@ -140,7 +140,7 @@ const VehicleDetail = () => {
                         {sessionUser && sessionUser.id === review.User.id &&
                             <>
                             <button type='button'>Edit</button>
-                            <button type='button'>Delete</button>
+                            <button onClick={() => handleDelete(review.id)}>Delete</button>
                             </>
                         }
                         </div>

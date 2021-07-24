@@ -28,24 +28,27 @@ router.post('/:id', restoreUser, asyncHandler(async function(req, res) {
     return res.json({ newReview })
 }))
 
-// router.put('/:id', restoreUser, asyncHandler(async function(req, res) {
-//     const vehicleId = req.params.id;
-//     const vehicle = await Vehicle.findByPk(vehicleId);
-//     const userId = req.user.id
+router.put('/:id', restoreUser, asyncHandler(async function(req, res) {
+    const reviewId = req.params.id
+    const updatedReview = await Review.update({
+        where: {
+            id: reviewId
+        },
+    })
 
-//     const updated = await Vehicle.update()
-// }))
+    return res.json(updatedReview)
+}))
 
-// router.delete('/:id', asyncHandler(async function (req, res) {
-//     const vehicleId = req.params.id;
-//     const vehicle = await Vehicle.findByPk(vehicleId);
+router.delete('/:id', asyncHandler(async function (req, res) {
+    const reviewId = req.params.id;
+    const review = await Review.findByPk(reviewId);
 
-//     await Vehicle.destroy({
-//         where: {
-//             id: vehicleId
-//         }
-//     });
-//     return res.json({vehicle})
-// }))
+    await Review.destroy({
+        where: {
+            id: reviewId
+        }
+    });
+    return res.json({review})
+}))
 
 module.exports = router;

@@ -41,9 +41,9 @@ router.put('/:id', restoreUser, asyncHandler(async function(req, res) {
 
 router.delete('/:id', asyncHandler(async function (req, res) {
     const reviewId = req.params.id;
-    const review = await Review.findByPk(vehicleId);
+    const review = await Review.findByPk(reviewId);
 
-    await Vehicle.destroy({
+    await Review.destroy({
         where: {
             id: reviewId
         }

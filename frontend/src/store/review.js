@@ -71,7 +71,9 @@ export const removeReview = (id) => async (dispatch) => {
         return deleted;
 }
 
-const reviewReducer = (state = {}, action) => {
+const initialState = {}
+
+const reviewReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
             const allReviews = {};

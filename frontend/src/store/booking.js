@@ -1,10 +1,27 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'bookings/LOAD';
+const SET_BOOKING = 'bookings/SET_BOOKING';
+const UPDATE = 'bookings/UPDATE'
+const DELETE = 'bookings/DELETE';
 
 const loadBookings = (bookings) => ({
     type: LOAD,
     bookings
+})
+
+const setBooking = (bookings) => ({
+    type: SET_BOOKING,
+    bookings
+})
+
+const updateBooking = (booking) => ({
+    type: UPDATE,
+    booking
+})
+
+const removeBooking = () => ({
+    type: DELETE,
 })
 
 export const getIndividualBookings = (id) => async (dispatch) => {
@@ -15,6 +32,35 @@ export const getIndividualBookings = (id) => async (dispatch) => {
         dispatch(loadBookings(individualBooking))
     }
 }
+
+export const setupBooking = (id, payload) => async (dispatch) => {
+    const res = await csrfFetch(`/api/bookings/${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+
+    if (res.ok) {
+        const newBooking = await res.json()
+        dispatch(setBooking(newBooking))
+        return newBooking;
+    }
+}
+
+export const editBooking = (id, payload) => async (dispatch) => {
+    const res = await csrfFetch(`/api/bookings/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+        const updated = await res.json();
+        dispatch(updateBooking(updated))
+        return updated;
+    }
+}
+
 
 const bookingsReducer = (state = {}, action) => {
     switch(action.type) {

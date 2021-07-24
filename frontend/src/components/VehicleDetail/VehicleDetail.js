@@ -68,9 +68,9 @@ const VehicleDetail = () => {
 
                     <div className='reviews'>
                     <form onSubmit={handleSubmit}>
-                        <input
+                        <textarea
                             type='text'
-                            placeholder='leave a review'
+                            placeholder='leave a comment'
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                             />

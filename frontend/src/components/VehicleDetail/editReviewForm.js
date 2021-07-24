@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editReview } from "../../store/review";
+import { useHistory } from 'react-router-dom';
 
 
-const EditReviewForm = ({ reviewId, hideForm }) => {
-    const currentReview = useSelector((state) => state.reviews[id])
-
+const EditReviewForm = ({ reviewId }) => {
+    const currentReview = useSelector((state) => state.reviews[reviewId])
+    const history = useHistory();
     const [review, setReview] = useState(currentReview.review)
     const [rating, setRating] = useState(currentReview.rating)
 
@@ -20,14 +21,14 @@ const EditReviewForm = ({ reviewId, hideForm }) => {
 
         let updated = await dispatchEvent(editReview(payload));
 
-        if(updatedItem) {
-            hideForm();
+        if(updated) {
+            history.push('/vehicles')
         }
     }
 
     const handleCancel = (e) => {
         e.preventDefault();
-        hideForm();
+        history.push('/vehicles')
     }
 
     return (
@@ -49,11 +50,9 @@ const EditReviewForm = ({ reviewId, hideForm }) => {
             <button type='submit'>Update Comment</button>
             <button type='button' onClick={handleCancel}>Cancel</button>
         </form>
-
         </section>
     )
 
 }
-
 
 export default EditReviewForm

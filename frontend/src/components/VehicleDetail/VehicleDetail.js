@@ -101,7 +101,6 @@ const VehicleDetail = () => {
     //         <button type='button'>Delete</button>
     //     )
     // }
-
     useEffect(() => {
         dispatch(getOneVehicle(id))
         dispatch(getReviews(id))
@@ -110,13 +109,13 @@ const VehicleDetail = () => {
     return (
         <>
        <div>
-        <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
+            <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
-        <p>Hosted by {vehicle.User.username} </p>
+            <p>Hosted by {vehicle?.User.username} </p>
 
-        <p>Price: ${vehicle?.price} per day</p>
+            <p>Price: ${vehicle?.price} per day</p>
 
-        <p>{vehicle?.description}</p>
+            <p>{vehicle?.description}</p>
 
        </div>
 

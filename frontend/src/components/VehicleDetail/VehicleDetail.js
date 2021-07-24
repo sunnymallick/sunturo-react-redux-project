@@ -25,7 +25,20 @@ const VehicleDetail = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.push(`/vehicles`)
+            history.push(`/vehicles/${reviews.Vehicle.id}`)
+        }
+    }
+
+    const handleEdit = async (e) => {
+        e.preventDefault();
+        const payload = {
+            review,
+            rating
+        }
+        let editedReview = await dispatch(editReview(id, payload))
+
+        if (editedReview) {
+            history.push(`/vehicles/${reviews.Vehicle.id}`)
         }
     }
 
@@ -66,9 +79,9 @@ const VehicleDetail = () => {
                         </Link>
                     </form>
 
-                    <div className='reviews'>
+                <div className='reviews'>
                     <form onSubmit={handleSubmit}>
-                        <input
+                        <textarea
                             type='text'
                             placeholder='leave a review'
                             value={review}
@@ -93,6 +106,25 @@ const VehicleDetail = () => {
     }
 }
 
+    <div className='editForm'>
+        <form onSubmit={handleEdit}>
+        <textarea
+            type='text'
+            placeholder='leave a review'
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            />
+            <select value={rating} onChange={(e) => setRating(e.target.value)}>
+                    <option value='5'>5</option>
+                    <option value='4'>4</option>
+                    <option value='3'>3</option>
+                    <option value='2'>2</option>
+                    <option value='1'>1</option>
+                </select>
+        </form>
+        <button type='submit' onClick={handleEdit}>Edit Review</button>
+    </div>
+
     // console.log(sessionUser.id)
     // console.log(listingReviews.User.id)
     // let sessionButtons;
@@ -112,7 +144,7 @@ const VehicleDetail = () => {
        <div>
         <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
-        <p>Hosted by {vehicle.User.username} </p>
+        <p>Hosted by {vehicle?.User.username} </p>
 
         <p>Price: ${vehicle?.price} per day</p>
 
@@ -131,18 +163,18 @@ const VehicleDetail = () => {
                    return (
                        <>
                         <div>
-                        <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
+                            <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
                         </div>
                         <div>
-                        {review.review}
+                            {review.review}
                         </div>
                         <div>
-                        {sessionUser && sessionUser.id === review.User.id &&
-                            <>
-                            <button type='button'>Edit</button>
-                            <button onClick={() => handleDelete(review.id)}>Delete</button>
+                            {sessionUser && sessionUser.id === review.User.id &&
+                                <>
+                                <button type='button'>Edit</button>
+                                <button onClick={() => handleDelete(review.id)}>Delete</button>
                             </>
-                        }
+                            }
                         </div>
                        </>
                    )

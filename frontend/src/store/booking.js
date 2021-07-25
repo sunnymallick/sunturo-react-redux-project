@@ -34,7 +34,7 @@ export const getIndividualBookings = (id) => async (dispatch) => {
 }
 
 export const setupBooking = (id, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/bookings/`, {
+    const res = await csrfFetch(`/api/bookings/${id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -48,7 +48,7 @@ export const setupBooking = (id, payload) => async (dispatch) => {
 }
 
 export const editBooking = (id, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/bookings/`, {
+    const res = await csrfFetch(`/api/bookings/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -62,7 +62,7 @@ export const editBooking = (id, payload) => async (dispatch) => {
 }
 
 export const deleteBooking = (id) => async (dispatch) => {
-    const deleted = await csrfFetch(`/api/bookings/`, {
+    const deleted = await csrfFetch(`/api/bookings/${id}`, {
         method: 'DELETE',
     })
         dispatch(removeBooking())

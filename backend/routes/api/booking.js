@@ -14,7 +14,6 @@ router.get('/', asyncHandler(async function (req, res) {
 router.post('/:id', restoreUser, asyncHandler(async function (req, res) {
     const { startDate, endDate } = req.body
     const vehicleId = req.params.id;
-    const vehicle = await Vehicle.findByPk(vehicleId)
     const userId = req.user.id
 
     const book = await Booking.create({

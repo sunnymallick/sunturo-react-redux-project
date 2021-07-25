@@ -24,6 +24,13 @@ const removeBooking = () => ({
     type: DELETE,
 })
 
+export const getBookings = () => async (dispatch) => {
+    const res = await csrfFetch('/api/bookings')
+    const allBookings = await res.json()
+
+    dispatch(loadBookings(allBookings))
+}
+
 export const getIndividualBookings = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/bookings/${id}`);
 

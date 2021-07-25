@@ -11,7 +11,7 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
     <>
-        <NavLink className='nav' to='/'>Become a Host</NavLink>
+        <NavLink className='nav' to={`/${sessionUser.id}/bookings`}>Your Bookings</NavLink>
         <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
         <p className='nav'>Welcome {sessionUser.username}</p>
         <ProfileButton user={sessionUser} />

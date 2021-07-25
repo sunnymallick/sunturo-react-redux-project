@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
@@ -39,8 +39,6 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.email}</li>
           <li>
-            <Link to='/'>My Listings</Link>
-            <br></br>
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>

@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getBookings, deleteBooking } from '../../store/booking';
 
 const UserBookings = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
-
+    // const sessionUser = useSelector(state => state.session.user);
+    // const userId = sessionUser.id
     const bookings = useSelector((state) => ((Object.values(state.bookings))));
     const listingBookings = bookings.filter(booking => booking.userId === +id)
     console.log(listingBookings)
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getBookings())
@@ -18,6 +20,8 @@ const UserBookings = () => {
 
     const handleDelete = (id) => {
         dispatch(deleteBooking(id))
+        history.push(`/`)
+
     }
 
     let content;

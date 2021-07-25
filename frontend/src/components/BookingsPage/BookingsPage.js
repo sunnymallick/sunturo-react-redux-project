@@ -8,6 +8,9 @@ import { useHistory } from 'react-router-dom';
 const BookingsPage = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const sessionUser = useSelector(state => state.session.user);
+    const userId = sessionUser.id
+    console.log(userId)
     const vehicle = useSelector((state) => state.vehicles[id])
     const history = useHistory();
     const [startDate, setStartDate] = useState('')
@@ -22,7 +25,7 @@ const BookingsPage = () => {
         let createdBooking = await dispatch(setupBooking(id, payload))
 
         if (createdBooking) {
-            history.push('/vehicles')
+            history.push(`/${userId}/bookings`)
         }
     }
 

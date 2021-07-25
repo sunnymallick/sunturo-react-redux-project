@@ -5,15 +5,45 @@
 p, h3, h5 {
    color: white;
 } */
+* {
+    margin: 0;
+    padding: 0;
+}
 
-.form {
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* background: url('https://sunny-website-clone.s3.us-west-1.amazonaws.com/images/shelby-homepage.jpg');
+    background-size: cover;
+    background-position: center; */
+    /* background-color: black; */
+
+}
+
+/* .homeContainer {
+
+} */
+
+.homeTitle {
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    max-height: 1000px;
+    position: fixed;
+    left: 30%;
 }
 
-.formInput {
-    display: inline-block;
-    padding: 2px;
+.homeImage {
+    max-height: 30px;
 }
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+
 
 .bio, h5 {
     text-align: center;

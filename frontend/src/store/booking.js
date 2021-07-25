@@ -73,6 +73,25 @@ const bookingsReducer = (state = {}, action) => {
             });
             return allBookings;
         }
+        case SET_BOOKING: {
+            const newState = {
+                ...state,
+                [action.bookings.id]: action.bookings
+            }
+            return newState
+        }
+        case UPDATE: {
+            return {
+                ...state,
+                [action.booking.id]: action.bookings
+            }
+        }
+        case DELETE: {
+            const newState = {...state};
+            delete newState[action.bookingId];
+            return newState;
+        }
+        
         default:
             return state;
     }

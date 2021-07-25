@@ -9,6 +9,7 @@ import VehicleDetail from "./components/VehicleDetail";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import BookingsPage from "./components/BookingsPage";
+import UserBookings from "./components/BookingsPage/UserBookings";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
         <Switch>
           <Route path='/' exact>
             <HomePage />
+          </Route>
+          <Route path='/:id/bookings' exact>
+            <UserBookings />
           </Route>
           <Route path='/vehicles' exact>
             <VehiclesPage />

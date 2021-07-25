@@ -7,7 +7,9 @@ const { restoreUser } = require('../../utils/auth')
 const router = express.Router();
 
 router.get('/', asyncHandler(async function (req, res) {
-    const bookings = await Booking.findAll();
+    const bookings = await Booking.findAll({
+        include: ['Vehicle', 'User']
+    });
     return res.json(bookings)
 }))
 

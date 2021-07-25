@@ -48,6 +48,10 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      vehicleImg: {
+        allowNull: false,
+        type: Sequelize.STRING(600)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

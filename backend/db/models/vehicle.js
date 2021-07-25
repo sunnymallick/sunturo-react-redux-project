@@ -10,13 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DECIMAL,
     lat: DataTypes.DECIMAL,
     lng: DataTypes.DECIMAL,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    vehicleImg: DataTypes.STRING,
   }, {});
   Vehicle.associate = function(models) {
     // associations can be defined here
     Vehicle.belongsTo(models.User, { foreignKey: 'userId'})
     Vehicle.hasMany(models.Review, { foreignKey: 'vehicleId' })
     Vehicle.hasMany(models.Booking, { foreignKey: 'vehicleId'})
+    // Vehicle.hasMany(models.Image, { foreignKey: 'vehicleId' })
   };
   return Vehicle;
 };

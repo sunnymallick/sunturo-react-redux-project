@@ -9,7 +9,7 @@ const SignupFormPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState(18);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -58,6 +58,7 @@ const SignupFormPage = () => {
           Age
           <input
             type="number"
+            min="18"
             value={age}
             onChange={(e) => setAge(e.target.value)}
             required

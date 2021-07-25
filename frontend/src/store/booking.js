@@ -31,14 +31,14 @@ export const getBookings = () => async (dispatch) => {
     dispatch(loadBookings(allBookings))
 }
 
-export const getIndividualBookings = (id) => async (dispatch) => {
-    const res = await csrfFetch(`/api/bookings/${id}`);
+// export const getIndividualBookings = (id) => async (dispatch) => {
+//     const res = await csrfFetch(`/api/bookings/${id}`);
 
-    if (res.ok) {
-        const individualBooking = await res.json();
-        dispatch(loadBookings(individualBooking))
-    }
-}
+//     if (res.ok) {
+//         const individualBooking = await res.json();
+//         dispatch(loadBookings(individualBooking))
+//     }
+// }
 
 export const setupBooking = (id, payload) => async (dispatch) => {
     const res = await csrfFetch(`/api/bookings/${id}`, {

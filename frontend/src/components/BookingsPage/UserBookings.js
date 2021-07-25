@@ -18,7 +18,22 @@ const UserBookings = () => {
     }, [dispatch])
 
     return (
-        <p>This is the user bookings page</p>
+        <>
+            <p>This is the user bookings page</p>
+            <div className='userBookings'>
+                <h5>Bookings</h5>
+                    {listingBookings.map((booking) => {
+                        return (
+                            <>
+                                <div>
+                                    <p>{booking?.Vehicle?.year} {booking?.Vehicle?.make} {booking?.Vehicle?.model}</p>
+                                    <p>Start Date: {new Date (booking.startDate).toLocaleDateString()} End Date: {new Date (booking.endDate).toLocaleDateString()}</p>
+                                </div>
+                            </>
+                        )
+                    })}
+            </div>
+        </>
     )
 
 }

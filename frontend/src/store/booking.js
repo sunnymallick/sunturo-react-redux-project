@@ -34,7 +34,7 @@ export const getIndividualBookings = (id) => async (dispatch) => {
 }
 
 export const setupBooking = (id, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/bookings/${id}`, {
+    const res = await csrfFetch(`/api/bookings/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -48,7 +48,7 @@ export const setupBooking = (id, payload) => async (dispatch) => {
 }
 
 export const editBooking = (id, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/bookings/${id}`, {
+    const res = await csrfFetch(`/api/bookings/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -61,6 +61,13 @@ export const editBooking = (id, payload) => async (dispatch) => {
     }
 }
 
+export const deleteBooking = (id) => async (dispatch) => {
+    const deleted = await csrfFetch(`/api/bookings/`, {
+        method: 'DELETE',
+    })
+        dispatch(removeBooking())
+        return deleted;
+}
 
 const bookingsReducer = (state = {}, action) => {
     switch(action.type) {
@@ -91,7 +98,7 @@ const bookingsReducer = (state = {}, action) => {
             delete newState[action.bookingId];
             return newState;
         }
-        
+
         default:
             return state;
     }

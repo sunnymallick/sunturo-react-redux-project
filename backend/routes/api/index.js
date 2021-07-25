@@ -1,19 +1,21 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
-const usersRouter = require('./users.js');
+const userRouter = require('./users.js');
 const vehicleRouter = require('./vehicles.js')
 const reviewRouter = require('./reviews.js')
+const bookingRouter = require('./booking.js')
 
 router.use('/session', sessionRouter);
 
-router.use('/users', usersRouter);
+router.use('/users', userRouter);
 
 router.use('/vehicles', vehicleRouter);
 
 router.use('/reviews', reviewRouter)
 
-module.exports = router;
+router.use('/bookings', bookingRouter)
 
+module.exports = router;
 
 
 // const asyncHandler = require('express-async-handler');

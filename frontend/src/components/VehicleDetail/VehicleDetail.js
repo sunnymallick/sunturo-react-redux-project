@@ -9,13 +9,14 @@ import { reviewVehicle, getReviews, removeReview } from '../../store/review';
 const VehicleDetail = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    const history = useHistory();
+
     const vehicle = useSelector((state) => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
     const reviews = useSelector((state) => ((Object.values(state.reviews))))
     const listingReviews = reviews.filter(review => review?.Vehicle?.id === +id);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(5);
+    const history = useHistory();
     // const [showEditForm, setShowEditForm] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -27,7 +28,7 @@ const VehicleDetail = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.push(`/vehicles/${reviews.Vehicle.id}`)
+            history.push(`/vehicles/${vehicle.id}`)
         }
     }
 
@@ -46,7 +47,7 @@ const VehicleDetail = () => {
 
     const handleDelete = (id) => {
         dispatch(removeReview(id))
-        history.push(`/vehicles`)
+        history.push(`/vehicles/${reviews.Vehicle.id}`)
         // if(deletedComment) {
         //     history.push(`/vehicles`)
         // }
@@ -58,49 +59,30 @@ const VehicleDetail = () => {
     if (sessionUser) {
             if (!(vehicle?.ageRestriction && sessionUser?.age < 25)) {
                 sessionLinks = (
-                    <>
-                    <form>
-                        <label>Trip Start: </label>
-                        <input
-                            type='date'
-                            placeholder='From'
-                            required/>
-                        <input
-                            type='time'
-                            required />
-                            <br></br>
-                        <label>Trip End:</label>
-                        <input
-                            type='date'
-                            placeholder='To'
-                            required/>
-                        <input
-                            type='time'
-                            required />
-                            <br></br>
-                        <Link to={`/vehicles/${id}/bookings`}>
-                            <button type='submit'>Continue</button>
-                        </Link>
-                    </form>
-
-                <div className='reviews'>
-                    <form onSubmit={handleSubmit}>
-                        <textarea
-                            type='text'
-                            placeholder='leave a review'
-                            value={review}
-                            onChange={(e) => setReview(e.target.value)}
-                            />
-                        <select value={rating} onChange={(e) => setRating(e.target.value)}>
-                            <option value='5'>5</option>
-                            <option value='4'>4</option>
-                            <option value='3'>3</option>
-                            <option value='2'>2</option>
-                            <option value='1'>1</option>
-                        </select>
-                    </form>
-                    <button type='submit' onClick={handleSubmit}>Submit Review</button>
-                </div>
+                        <>
+                    <label>If you would like to book this vehicle, please click continue.</label>
+                    <br></br>
+                    <Link to={`/vehicles/${id}/bookings`}>
+                        <button type='submit'>Continue</button>
+                    </Link>
+                    <div className='placeComment'>
+                        <form onSubmit={handleSubmit}>
+                            <textarea
+                                type='text'
+                                placeholder='leave a comment'
+                                value={review}
+                                onChange={(e) => setReview(e.target.value)}
+                                />
+                            <select value={rating} onChange={(e) => setRating(e.target.value)}>
+                                <option value='5'>5</option>
+                                <option value='4'>4</option>
+                                <option value='3'>3</option>
+                                <option value='2'>2</option>
+                                <option value='1'>1</option>
+                            </select>
+                            <button type='submit'>Submit Review</button>
+                        </form>
+                    </div>
                 </>
                 )
         } else {

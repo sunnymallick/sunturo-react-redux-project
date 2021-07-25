@@ -20,8 +20,7 @@ const UserBookings = () => {
 
     const handleDelete = (id) => {
         dispatch(deleteBooking(id))
-        history.push(`/`)
-
+        history.push(`/vehicles`)
     }
 
     let content;

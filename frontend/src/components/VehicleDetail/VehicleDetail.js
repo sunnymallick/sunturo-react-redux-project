@@ -28,7 +28,7 @@ const VehicleDetail = () => {
         let createdReview = await dispatch(reviewVehicle(id, payload))
 
         if (createdReview) {
-            history.push(`/vehicles/${vehicle.id}`)
+            history.push(`/vehicles`)
         }
     }
 
@@ -47,7 +47,7 @@ const VehicleDetail = () => {
 
     const handleDelete = (id) => {
         dispatch(removeReview(id))
-        history.push(`/vehicles/${reviews.Vehicle.id}`)
+        history.push(`/vehicles`)
         // if(deletedComment) {
         //     history.push(`/vehicles`)
         // }
@@ -91,26 +91,6 @@ const VehicleDetail = () => {
         )
     }
 }
-
-    // <div className='editForm'>
-    //     <form onSubmit={handleEdit}>
-    //     <textarea
-    //         type='text'
-    //         placeholder='leave a review'
-    //         value={review}
-    //         onChange={(e) => setReview(e.target.value)}
-    //         />
-    //         <select value={rating} onChange={(e) => setRating(e.target.value)}>
-    //                 <option value='5'>5</option>
-    //                 <option value='4'>4</option>
-    //                 <option value='3'>3</option>
-    //                 <option value='2'>2</option>
-    //                 <option value='1'>1</option>
-    //             </select>
-    //     </form>
-    //     <button type='submit' onClick={handleEdit}>Edit Review</button>
-    // </div>
-
 
     useEffect(() => {
         dispatch(getOneVehicle(id))

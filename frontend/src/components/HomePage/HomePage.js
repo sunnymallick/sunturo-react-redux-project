@@ -12,15 +12,21 @@ const HomePage = () => {
             <>
             <h3>Find your adventure here. Click the link below to browse our selection.</h3>
             <Link to='/vehicles'>
-                <button type='button'>Browse Listings</button>
+                <button className='browseButton' type='button'>Browse Listings</button>
             </Link>
             </>
         )
     } else {
         sessionLinks = (
-            <Link to='/login'>
-                <button type='button'>Please login or signup to see our selection of vehicles</button>
-            </Link>
+            <>
+            <h3>Please login or signup to view our listings.</h3>
+                <Link to='/login'>
+                    <button className='browseButton' type='button'>Login</button>
+                </Link>
+                <Link to='/signup'>
+                    <button className='browseButton' type='button'>Signup</button>
+                </Link>
+            </>
         )
     }
 
@@ -31,7 +37,9 @@ const HomePage = () => {
                     <h3>The World's Smallest Car Sharing Marketplace </h3>
                 </div>
                 <div className='homeLinks'>
+                    <div className='sessionLinks'>
                     {sessionLinks}
+                    </div>
                 </div>
             </div>
         </>

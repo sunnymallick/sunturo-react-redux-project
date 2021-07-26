@@ -27,6 +27,7 @@
 }
 
 h5 {
+    list-style-type: none;
     color: red;
     text-align: center;
     font-size: 25px;

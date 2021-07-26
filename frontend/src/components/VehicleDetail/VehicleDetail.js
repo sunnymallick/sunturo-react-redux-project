@@ -4,7 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { getOneVehicle } from '../../store/vehicle';
 import { useHistory } from 'react-router-dom';
 import { reviewVehicle, getReviews, removeReview } from '../../store/review';
-// import EditReviewForm from './editReviewForm';
+import './VehicleDetail.css';
+
 
 const VehicleDetail = () => {
     const dispatch = useDispatch();
@@ -59,12 +60,12 @@ const VehicleDetail = () => {
     if (sessionUser) {
             if (!(vehicle?.ageRestriction && sessionUser?.age < 25)) {
                 sessionLinks = (
-                        <>
-                    <label>If you would like to book this vehicle, please click continue.</label>
-                    <br></br>
-                    <Link to={`/vehicles/${id}/bookings`}>
-                        <button type='submit'>Continue</button>
-                    </Link>
+                <>
+                    <div className='bookingLabel'>
+                        <Link to={`/vehicles/${id}/bookings`}>
+                            <button className='bookingButton' type='submit'>Book This Vehicle</button>
+                        </Link>
+                    </div>
                     <div className='placeComment'>
                         <form onSubmit={handleSubmit}>
                             <textarea
@@ -99,44 +100,49 @@ const VehicleDetail = () => {
 
     return (
         <>
-       <div>
-            <img src={vehicle.vehicleImg} alt='vehiclepic' />
-            <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
+            <div className='individualVehicleInfo'>
+                <div className='individualVehicleContainer'>
+                    <img src={vehicle?.vehicleImg} alt='vehiclepic' className='individualVehiclePic'/>
+                    <div className='vehicleInfoContainer'>
+                        <p className='individualVehicleInfo'>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
-            <p>Hosted by {vehicle?.User.username} </p>
+                        <p className='individualVehicleInfo'>Hosted by: {vehicle?.User.username} </p>
 
-            <p>Price: ${vehicle?.price} per day</p>
+                        <p className='individualVehicleInfo'>Price: ${vehicle?.price} / day</p>
 
-            <p>{vehicle?.description}</p>
-       </div>
+                        <p className='individualVehicleInfo'>Description: {vehicle?.description}</p>
+                    </div>
+                </div>
 
 
-        <div className='booking'>
-            {sessionLinks}
-        </div>
 
-        <h5>Comments</h5>
-        <div className='reviews'>
-               {listingReviews.map((review) => {
-                   return (
-                       <>
-                        <div>
-                            <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
-                        </div>
-                        <div>
-                            {review.review}
-                        </div>
-                        <div>
-                            {sessionUser && sessionUser.id === review.User.id &&
-                                <>
-                                {/* <button type='button' onClick={() => handleEdit(review.id)}>Edit</button> */}
-                                <button onClick={() => handleDelete(review.id)}>Delete</button>
+                <div className='booking'>
+                    {sessionLinks}
+                </div>
+
+                <h5>Comments</h5>
+                <div className='reviews'>
+                    {listingReviews.map((review) => {
+                        return (
+                            <>
+                                <div>
+                                    <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
+                                </div>
+                                <div>
+                                    {review.review}
+                                </div>
+                                <div>
+                                    {sessionUser && sessionUser.id === review.User.id &&
+                                        <>
+                                        {/* <button type='button' onClick={() => handleEdit(review.id)}>Edit</button> */}
+                                        <button onClick={() => handleDelete(review.id)}>Delete</button>
+                                    </>
+                                    }
+                                </div>
                             </>
-                            }
-                        </div>
-                       </>
-                   )
-               })}
+                        )
+                    })}
+                </div>
         </div>
     </>
     )

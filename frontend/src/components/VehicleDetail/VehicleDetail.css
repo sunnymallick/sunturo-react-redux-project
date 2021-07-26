@@ -1,0 +1,49 @@
+
+
+.individualVehicleContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    background-color: #1c1e1f;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.individualVehiclePic {
+    display: block;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    width: 450px;
+    align-items: center;
+}
+
+.individualVehicleInfo {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
+}
+
+.bookingLabel {
+    background-color: #1c1e1f;
+    text-align: center;
+}
+
+.bookingButton {
+    background-color: #1c1e1f;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.bookingButton:hover {
+    background-color: red;
+    transition: .1s;
+}

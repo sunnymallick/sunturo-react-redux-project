@@ -22,7 +22,7 @@ const VehiclesPage = () => {
        }
 
     return (
-    <div>
+    <>
         <div className='vehiclePage'>
         {ageWarning}
             <div className='vehicleContainer'>
@@ -40,7 +40,7 @@ const VehiclesPage = () => {
             })}
             </div>
         </div>
-    </div>
+    </>
     )
 }
 

@@ -9,32 +9,38 @@ const HomePage = () => {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
+            <>
+            <h3>Find your next adventure here. Click the link below to browse our selection.</h3>
             <Link to='/vehicles'>
-                <button type='button'>Click here to browse our selection</button>
+                <button className='browseButton' type='button'>Browse Listings</button>
             </Link>
+            </>
         )
     } else {
         sessionLinks = (
-            <Link to='/login'>
-                <button type='button'>Please login or signup to see our selection of vehicles</button>
-            </Link>
+            <>
+            <h3>Please login or signup to view our listings.</h3>
+                <Link to='/login'>
+                    <button className='browseButton' type='button'>Login</button>
+                </Link>
+                <Link to='/signup'>
+                    <button className='browseButton' type='button'>Signup</button>
+                </Link>
+            </>
         )
     }
 
     return (
         <>
             <div className='homeContainer'>
-                <div className='homeTitle'>
-                    <p>Welcome to SunTuro!</p>
-
+                <div className='homeInfo'>
                     <h3>The World's Smallest Car Sharing Marketplace </h3>
+                </div>
+                <div className='homeLinks'>
+                    <div className='sessionLinks'>
                     {sessionLinks}
+                    </div>
                 </div>
-                <div className='homeImage'>
-                    <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images/shelby-homepage.jpg' alt='shelby' />
-                </div>
-
-
             </div>
         </>
     )

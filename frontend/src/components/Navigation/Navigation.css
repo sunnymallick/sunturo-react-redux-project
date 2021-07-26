@@ -1,19 +1,31 @@
 .nav {
-    padding: 5px;
+    padding: 12px;
     list-style-type: none;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline;
+    font-size: 20px;
+    text-decoration: none;
+    justify-content: space-between;
 }
 
-li {
-    list-style-type: none;
-    align-items: center;
-
+.nav:hover {
+    background-color: red;
+    transition: .5s;
 }
+
 
 .navbar {
     text-align: right;
-    background-color: black;
-    padding: 1px;
+    background-color: #1c1e1f;
+    padding: 20px;
+}
 
+
+li {
+    list-style-type: none;
+}
+
+img {
+    float: left;
 }

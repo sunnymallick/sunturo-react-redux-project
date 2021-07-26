@@ -32,13 +32,15 @@ const HomePage = () => {
 
     return (
         <>
-            <div className='homeContainer'>
-                <div className='homeInfo'>
-                    <h3>The World's Smallest Car Sharing Marketplace </h3>
-                </div>
-                <div className='homeLinks'>
-                    <div className='sessionLinks'>
-                    {sessionLinks}
+            <div className='home'>
+                <div className='homeContainer'>
+                    <div className='homeInfo'>
+                        <h3>The World's Smallest Car Sharing Marketplace </h3>
+                    </div>
+                    <div className='homeLinks'>
+                        <div className='sessionLinks'>
+                        {sessionLinks}
+                        </div>
                     </div>
                 </div>
             </div>

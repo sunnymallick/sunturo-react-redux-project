@@ -30,61 +30,71 @@ const SignupFormPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          placeholder='ex: example@email.com'
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          placeholder='Enter a username'
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-          Age
-          <input
-            type="number"
-            min="18"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            required
+    <>
+      <div className='signupContainer'>
+        <p className='signUpName'>Sign Up</p>
+        <form className='signUpForm' onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <label>
+            Email:
+            <input
+              type="text"
+              value={email}
+              placeholder='ex: example@email.com'
+              onChange={(e) => setEmail(e.target.value)}
+              className='signUpInput'
+              required
             />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          placeholder='Password must be 6 characters or longer'
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+          </label>
+          <label>
+            Username:
+            <input
+              type="text"
+              value={username}
+              placeholder='Enter a username'
+              onChange={(e) => setUsername(e.target.value)}
+              className='signUpInput'
+              required
+            />
+          </label>
+          <label>
+              Age:
+              <input
+                type="number"
+                min="18"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                className='signUpInput'
+                required
+                />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              placeholder='Password must be 6 characters or longer'
+              onChange={(e) => setPassword(e.target.value)}
+              className='signUpInput'
+              required
+            />
+          </label>
+          <label>
+            Confirm Password:
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className='signUpInput'
+              required
+            />
+          </label>
+          <button className='signupSubmit' type="submit">Sign Up</button>
+        </form>
+        </div>
+    </>
   );
 }
 

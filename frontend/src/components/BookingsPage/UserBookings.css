@@ -1,0 +1,47 @@
+.userBookingsTitle {
+    color: white;
+    background-color: #1c1e1f;
+    padding: 20px;
+    font: 30px;
+}
+
+.userBookingsContainer {
+    padding-top: 30px;
+    align-items: center;
+}
+
+.userBookingInfo {
+    color: white;
+    background-color: #1c1e1f;
+    align-items: center;
+}
+
+.userBookingCarInfo {
+    color: white;
+    font-size: 25px;
+    background-color: #1c1e1f;
+    text-align: center;
+}
+
+.deleteUserBooking {
+    background-color: #1c1e1f;
+    color: white;
+    align-items: center;
+    height: 50px;
+    font-size: 30px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.deleteUserBooking:hover {
+    background-color: red;
+    transition: .1s;
+}
+
+.noBookingsMessage {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 50px;
+    background-color: #1c1e1f;
+}

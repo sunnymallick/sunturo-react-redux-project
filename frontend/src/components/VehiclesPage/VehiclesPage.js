@@ -14,17 +14,16 @@ const VehiclesPage = () => {
         dispatch(getVehicles());
     }, [dispatch])
 
-    let ageWarning;
-       if (sessionUser?.age < 25) {
-           ageWarning = (
-           <p>***Some vehicles are unavailable due to your age restriction.</p>
-           )
-       }
+    // let ageWarning;
+    //    if (sessionUser?.age < 25) {
+    //        ageWarning = (
+    //        <p className='ageRestrictionNote'>***Some vehicles are unavailable due to your age restriction.</p>
+    //        )
+    //    }
 
     return (
     <>
         <div className='vehiclePage'>
-        {ageWarning}
             <div className='vehicleContainer'>
             {vehicles.map(vehicle => {
             if (vehicle?.id) {

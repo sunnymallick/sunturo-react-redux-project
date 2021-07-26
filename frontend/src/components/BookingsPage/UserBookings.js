@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getBookings, deleteBooking } from '../../store/booking';
+import './UserBookings.css';
+
 
 const UserBookings = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    // const sessionUser = useSelector(state => state.session.user);
-    // const userId = sessionUser.id
     const bookings = useSelector((state) => ((Object.values(state.bookings))));
     const listingBookings = bookings.filter(booking => booking.userId === +id)
     console.log(listingBookings)
@@ -26,19 +26,21 @@ const UserBookings = () => {
     let content;
     if (!listingBookings.length) {
         content = (
-            <p>You currently do not have any bookings.</p>
+            <p className='noBookingsMessage'>You currently do not have any bookings. Check out our listings!</p>
         )
     } else {
         content = (
-            <div className='userBookings'>
-            <h5>Bookings</h5>
+            <div className='userBookingsContainer'>
+                <h5 className='userBookingsTitle'>Your Bookings</h5>
                 {listingBookings.map((booking) => {
                     return (
                         <>
-                            <div>
-                                <p>{booking?.Vehicle?.year} {booking?.Vehicle?.make} {booking?.Vehicle?.model}</p>
-                                <p>Start Date: {new Date (booking.startDate).toLocaleDateString()} End Date: {new Date (booking.endDate).toLocaleDateString()}</p>
-                                <button type='button' onClick={() => handleDelete(booking.id)}>Delete Booking</button>
+                            <div className='userBookingsInfo'>
+                                <p className='userBookingCarInfo'>{booking?.Vehicle?.year} {booking?.Vehicle?.make} {booking?.Vehicle?.model}</p>
+                                <p className='userBookingCarInfo'>Start Date: {new Date (booking.startDate).toLocaleDateString()} End Date: {new Date (booking.endDate).toLocaleDateString()}</p>
+                                <div className='deleteUserBooking'>
+                                <button className='deleteUserBooking' type='button' onClick={() => handleDelete(booking.id)}>Cancel Booking</button>
+                                </div>
                             </div>
                         </>
                     )
@@ -49,19 +51,6 @@ const UserBookings = () => {
 
     return (
         <>
-            {/* <div className='userBookings'>
-                <h5>Bookings</h5>
-                    {listingBookings.map((booking) => {
-                        return (
-                            <>
-                                <div>
-                                    <p>{booking?.Vehicle?.year} {booking?.Vehicle?.make} {booking?.Vehicle?.model}</p>
-                                    <p>Start Date: {new Date (booking.startDate).toLocaleDateString()} End Date: {new Date (booking.endDate).toLocaleDateString()}</p>
-                                </div>
-                            </>
-                        )
-                    })}
-            </div> */}
             {content}
         </>
     )

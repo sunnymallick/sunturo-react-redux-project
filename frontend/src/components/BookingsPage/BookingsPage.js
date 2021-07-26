@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setupBooking } from '../../store/booking';
 import { useHistory } from 'react-router-dom';
+import './BookingsPage.css';
 
 
 const BookingsPage = () => {
@@ -31,26 +32,28 @@ const BookingsPage = () => {
 
     return (
         <>
-        <p>Booking for {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
-        <form onSubmit={handleSubmit}>
-            <label>Trip Start: </label>
-                <input
-                    type='datetime-local'
-                    placeholder='From'
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    required/>
-                    <br></br>
-            <label>Trip End:</label>
-                <input
-                    type='datetime-local'
-                    placeholder='To'
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    required/>
-                    <br></br>
-                <button type='submit'>Place Booking</button>
-            </form>
+        <div className='bookingForm'>
+            <p className='bookingHeading'>Booking for the {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
+            <form className='dateSelect' onSubmit={handleSubmit}>
+                <label className='bookingDate'>Trip Start: </label>
+                    <input
+                        type='datetime-local'
+                        placeholder='From'
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        className='dateInput'
+                        required/>
+                <label className='bookingDate'>Trip End:</label>
+                    <input
+                        type='datetime-local'
+                        placeholder='To'
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        className='dateInput'
+                        required/>
+                    <button type='submit'>Place Booking</button>
+                </form>
+            </div>
         </>
         )
     }

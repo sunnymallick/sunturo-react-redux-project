@@ -95,3 +95,18 @@ div #modal-content {
     border-radius: 15px;
     transition: .1s;
 }
+
+.demoUserLogin {
+    border-radius: 8px;
+    font-size: 25px;
+    background-color: #1c1e1f;
+    color: white;
+    padding: 10px;
+    border: none;
+    padding-top: 10px;
+}
+
+.demoUserLogin:hover {
+    background-color: red;
+    transition: .1s;
+}

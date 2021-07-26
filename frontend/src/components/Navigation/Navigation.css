@@ -1,5 +1,5 @@
 .nav {
-    padding: 12px;
+    padding: 10px;
     list-style-type: none;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -11,7 +11,8 @@
 
 .nav:hover {
     background-color: red;
-    transition: .5s;
+    border-radius: 15px;
+    transition: .1s;
 }
 
 
@@ -28,4 +29,23 @@ li {
 
 img {
     float: left;
+}
+
+.loginButton {
+    padding: 5px;
+    list-style-type: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline;
+    font-size: 20px;
+    text-decoration: none;
+    justify-content: space-between;
+    background-color: #1c1e1f;
+    border: none;
+}
+
+.loginButton:hover {
+    background-color: red;
+    border-radius: 15px;
+    transition: .1s;
 }

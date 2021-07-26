@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
 import VehiclesPage from "./components/VehiclesPage";
@@ -31,9 +30,6 @@ function App() {
           </Route>
           <Route path='/vehicles' exact>
             <VehiclesPage />
-          </Route>
-          <Route path='/login' exact>
-            <LoginFormPage />
           </Route>
           <Route path='/signup' exact>
             <SignupFormPage />

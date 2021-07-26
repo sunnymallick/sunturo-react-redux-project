@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import LoginFormModal from "../LoginFormModal"
 import "./HomePage.css"
 
 const HomePage = () => {
@@ -20,9 +21,10 @@ const HomePage = () => {
         sessionLinks = (
             <>
             <h3>Please login or signup to view our listings.</h3>
-                <Link to='/login'>
+                {/* <Link to='/login'>
                     <button className='browseButton' type='button'>Login</button>
-                </Link>
+                </Link> */}
+                <LoginFormModal />
                 <Link to='/signup'>
                     <button className='browseButton' type='button'>Signup</button>
                 </Link>
@@ -32,13 +34,15 @@ const HomePage = () => {
 
     return (
         <>
-            <div className='homeContainer'>
-                <div className='homeInfo'>
-                    <h3>The World's Smallest Car Sharing Marketplace </h3>
-                </div>
-                <div className='homeLinks'>
-                    <div className='sessionLinks'>
-                    {sessionLinks}
+            <div className='home'>
+                <div className='homeContainer'>
+                    <div className='homeInfo'>
+                        <h3>The World's Smallest Car Sharing Marketplace </h3>
+                    </div>
+                    <div className='homeLinks'>
+                        <div className='sessionLinks'>
+                        {sessionLinks}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,116 @@
+
+
+.individualVehicleContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    background-color: #1c1e1f;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.individualVehiclePic {
+    display: block;
+    padding-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    width: 450px;
+    align-items: center;
+}
+
+.individualVehicleInfo {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
+}
+
+.bookingLabel {
+    background-color: #1c1e1f;
+    text-align: center;
+}
+
+.bookingButton {
+    background-color: #1c1e1f;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.bookingButton:hover {
+    background-color: red;
+    transition: .1s;
+}
+
+.placeComment {
+    background-color: #1c1e1f;
+}
+
+.reviewForm {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.reviewTextArea {
+    width: 300px;
+    height: 50px;
+    display: inline;
+    border-radius: 8px;
+}
+
+.reviewRating {
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 25px;
+}
+
+.reviewSubmitButton {
+    height: 50px;
+    color: white;
+    background-color: #1c1e1f;
+    border-radius: 8px;
+}
+
+.reviewSubmitButton:hover {
+    background-color: red;
+    transition: .1s;
+}
+
+.commentsLabel {
+    background-color: #1c1e1f;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.commentsArea {
+    background-color: #1c1e1f;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentsInfo {
+    background-color: #1c1e1f;
+    text-align: center;
+    padding: 20px;
+}
+
+.reviewDelete {
+    margin-left: 620px;
+    display: flex;
+    font-size: 20px;
+    color: white;
+    background-color: #1c1e1f;
+    border-radius: 8px;
+}
+
+.reviewDelete:hover {
+    background-color: red;
+    transition: .1s;
+}

@@ -1,7 +1,9 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import LoginFormModal from '../LoginFormModal';
+
 
 // import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -22,7 +24,6 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
     <>
-        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo' className='nav'/>
         <NavLink className='nav' to='/'>Home</NavLink>
         <NavLink className='nav' to={`/${sessionUser.id}/bookings`}>Your Bookings</NavLink>
         <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
@@ -32,9 +33,8 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
-        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
         <NavLink className='nav' to='/'>Home</NavLink>
-        <NavLink className='nav' to="/login">Log In</NavLink>
+        <LoginFormModal />
         <NavLink className='nav' to="/signup">Sign Up</NavLink>
       </>
     );
@@ -44,6 +44,9 @@ const Navigation = ({ isLoaded }) => {
     <div className='navbar'>
     <ul>
       <li>
+        <Link to='/'>
+          <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
+        </Link>
         {isLoaded && sessionLinks}
       </li>
     </ul>

@@ -3,6 +3,7 @@ import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { getVehicles } from "../../store/vehicle"
+import './VehiclesPage.css';
 
 
 const VehiclesPage = () => {
@@ -13,36 +14,6 @@ const VehiclesPage = () => {
         dispatch(getVehicles());
     }, [dispatch])
 
-    let sessionLinks;
-    if (sessionUser) {
-        sessionLinks = (
-        vehicles.map(vehicle => {
-            if (vehicle?.id) {
-                    return (
-                    <div>
-                        <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
-                            <img src={vehicle.vehicleImg} alt='vehiclepic' />
-                            <h5>{vehicle.year} {vehicle.make} {vehicle.model}</h5>
-                        </Link>
-                    </div>
-                    )
-                }
-            })
-        )
-    } else {
-        sessionLinks = (
-            <>
-            <p>Please login to see our selection of vehicles</p>
-            <Link to='/login'>
-                <button type='button'>Login</button>
-            </Link>
-            <Link to='/signup'>
-                <button type='button'>Signup</button>
-            </Link>
-            </>
-        )
-    }
-
     let ageWarning;
        if (sessionUser?.age < 25) {
            ageWarning = (
@@ -50,14 +21,26 @@ const VehiclesPage = () => {
            )
        }
 
-       return (
-
-        <div>
-            {ageWarning}
-            {sessionLinks}
-            <p></p>
+    return (
+    <>
+        <div className='vehiclePage'>
+        {ageWarning}
+            <div className='vehicleContainer'>
+            {vehicles.map(vehicle => {
+            if (vehicle?.id) {
+                    return (
+                    <div className='vehicleListing'>
+                        <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
+                            <img className='vehicleImg' src={vehicle.vehicleImg} alt='vehiclepic' />
+                            <h5>{vehicle.year} {vehicle.make} {vehicle.model}</h5>
+                        </Link>
+                    </div>
+                    )
+                }
+            })}
+            </div>
         </div>
-
+    </>
     )
 }
 

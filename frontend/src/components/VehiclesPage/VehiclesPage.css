@@ -1,0 +1,34 @@
+.vehiclePage {
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    margin: 0;
+    padding: 0 0 10px 0;
+    background-color: #1c1e1f;
+}
+
+.vehicleImg {
+    height: 300px;
+    width: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+.vehicleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.vehicleListing {
+    padding: 10px;
+}
+
+h5 {
+    list-style-type: none;
+    color: red;
+    text-align: center;
+    font-size: 25px;
+}

@@ -4,7 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { getOneVehicle } from '../../store/vehicle';
 import { useHistory } from 'react-router-dom';
 import { reviewVehicle, getReviews, removeReview } from '../../store/review';
-// import EditReviewForm from './editReviewForm';
+import './VehicleDetail.css';
+
 
 const VehicleDetail = () => {
     const dispatch = useDispatch();
@@ -59,28 +60,29 @@ const VehicleDetail = () => {
     if (sessionUser) {
             if (!(vehicle?.ageRestriction && sessionUser?.age < 25)) {
                 sessionLinks = (
-                        <>
-                    <label>If you would like to book this vehicle, please click continue.</label>
-                    <br></br>
-                    <Link to={`/vehicles/${id}/bookings`}>
-                        <button type='submit'>Continue</button>
-                    </Link>
+                <>
+                    <div className='bookingLabel'>
+                        <Link to={`/vehicles/${id}/bookings`}>
+                            <button className='bookingButton' type='submit'>Book This Vehicle</button>
+                        </Link>
+                    </div>
                     <div className='placeComment'>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className='reviewForm'>
                             <textarea
                                 type='text'
-                                placeholder='leave a comment'
+                                placeholder='Leave a Comment and a Rating!'
                                 value={review}
                                 onChange={(e) => setReview(e.target.value)}
+                                className='reviewTextArea'
                                 />
-                            <select value={rating} onChange={(e) => setRating(e.target.value)}>
-                                <option value='5'>5</option>
-                                <option value='4'>4</option>
-                                <option value='3'>3</option>
-                                <option value='2'>2</option>
-                                <option value='1'>1</option>
+                            <select value={rating} onChange={(e) => setRating(e.target.value)} className='reviewRating'>
+                                <option value='5'>5 stars</option>
+                                <option value='4'>4 stars</option>
+                                <option value='3'>3 stars</option>
+                                <option value='2'>2 stars</option>
+                                <option value='1'>1 stars</option>
                             </select>
-                            <button type='submit'>Submit Review</button>
+                            <button className='reviewSubmitButton' type='submit'>Submit Review</button>
                         </form>
                     </div>
                 </>
@@ -99,44 +101,49 @@ const VehicleDetail = () => {
 
     return (
         <>
-       <div>
-            <img src={vehicle.vehicleImg} alt='vehiclepic' />
-            <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
+            <div className='individualVehicleInfo'>
+                <div className='individualVehicleContainer'>
+                    <img src={vehicle?.vehicleImg} alt='vehiclepic' className='individualVehiclePic'/>
+                    <div className='vehicleInfoContainer'>
+                        <p className='individualVehicleInfo'>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
-            <p>Hosted by {vehicle?.User.username} </p>
+                        <p className='individualVehicleInfo'>Hosted by: {vehicle?.User.username} </p>
 
-            <p>Price: ${vehicle?.price} per day</p>
+                        <p className='individualVehicleInfo'>Price: ${vehicle?.price} / day</p>
 
-            <p>{vehicle?.description}</p>
-       </div>
+                        <p className='individualVehicleInfo'>Description: {vehicle?.description}</p>
+                    </div>
+                </div>
 
 
-        <div className='booking'>
-            {sessionLinks}
-        </div>
 
-        <h5>Comments</h5>
-        <div className='reviews'>
-               {listingReviews.map((review) => {
-                   return (
-                       <>
-                        <div>
-                            <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
-                        </div>
-                        <div>
-                            {review.review}
-                        </div>
-                        <div>
-                            {sessionUser && sessionUser.id === review.User.id &&
-                                <>
-                                {/* <button type='button' onClick={() => handleEdit(review.id)}>Edit</button> */}
-                                <button onClick={() => handleDelete(review.id)}>Delete</button>
+                <div className='booking'>
+                    {sessionLinks}
+                </div>
+
+                <h5 className='commentsLabel'>Comments</h5>
+                <div className='commentsArea'>
+                    {listingReviews.map((review) => {
+                        return (
+                            <>
+                                <div className='commentsInfo'>
+                                    <p>{review.User.username} rated this vehicle a {review.rating} out of 5 stars:</p>
+                                </div>
+                                <div className='commentsInfo'>
+                                    {review.review}
+                                </div>
+                                <div>
+                                    {sessionUser && sessionUser.id === review.User.id &&
+                                        <>
+                                        {/* <button type='button' onClick={() => handleEdit(review.id)}>Edit</button> */}
+                                        <button className='reviewDelete' onClick={() => handleDelete(review.id)}>Delete Comment</button>
+                                    </>
+                                    }
+                                </div>
                             </>
-                            }
-                        </div>
-                       </>
-                   )
-               })}
+                        )
+                    })}
+                </div>
         </div>
     </>
     )

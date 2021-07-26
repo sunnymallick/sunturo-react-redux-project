@@ -22,7 +22,7 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
     <>
-        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
+        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo' className='nav'/>
         <NavLink className='nav' to='/'>Home</NavLink>
         <NavLink className='nav' to={`/${sessionUser.id}/bookings`}>Your Bookings</NavLink>
         <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>

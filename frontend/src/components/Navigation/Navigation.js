@@ -1,8 +1,9 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
+
 
 // import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -43,7 +44,9 @@ const Navigation = ({ isLoaded }) => {
     <div className='navbar'>
     <ul>
       <li>
-        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
+        <Link to='/'>
+          <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
+        </Link>
         {isLoaded && sessionLinks}
       </li>
     </ul>

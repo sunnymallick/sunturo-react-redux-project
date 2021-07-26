@@ -14,15 +14,18 @@
     transition: .5s;
 }
 
-li {
-    list-style-type: none;
-    align-items: center;
-    display: inline;
-}
 
 .navbar {
     text-align: right;
     background-color: #1c1e1f;
-    padding: 15px;
+    padding: 20px;
+}
 
+
+li {
+    list-style-type: none;
+}
+
+img {
+    float: left;
 }

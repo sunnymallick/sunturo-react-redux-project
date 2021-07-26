@@ -67,21 +67,22 @@ const VehicleDetail = () => {
                         </Link>
                     </div>
                     <div className='placeComment'>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className='reviewForm'>
                             <textarea
                                 type='text'
-                                placeholder='leave a comment'
+                                placeholder='Leave a Comment and a Rating!'
                                 value={review}
                                 onChange={(e) => setReview(e.target.value)}
+                                className='reviewTextArea'
                                 />
-                            <select value={rating} onChange={(e) => setRating(e.target.value)}>
-                                <option value='5'>5</option>
-                                <option value='4'>4</option>
-                                <option value='3'>3</option>
-                                <option value='2'>2</option>
-                                <option value='1'>1</option>
+                            <select value={rating} onChange={(e) => setRating(e.target.value)} className='reviewRating'>
+                                <option value='5'>5 stars</option>
+                                <option value='4'>4 stars</option>
+                                <option value='3'>3 stars</option>
+                                <option value='2'>2 stars</option>
+                                <option value='1'>1 stars</option>
                             </select>
-                            <button type='submit'>Submit Review</button>
+                            <button className='reviewSubmitButton' type='submit'>Submit Review</button>
                         </form>
                     </div>
                 </>
@@ -120,22 +121,22 @@ const VehicleDetail = () => {
                     {sessionLinks}
                 </div>
 
-                <h5>Comments</h5>
-                <div className='reviews'>
+                <h5 className='commentsLabel'>Comments</h5>
+                <div className='commentsArea'>
                     {listingReviews.map((review) => {
                         return (
                             <>
-                                <div>
-                                    <p>{review.User.username} rated this vehicle a {review.rating} out of 5:</p>
+                                <div className='commentsInfo'>
+                                    <p>{review.User.username} rated this vehicle a {review.rating} out of 5 stars:</p>
                                 </div>
-                                <div>
+                                <div className='commentsInfo'>
                                     {review.review}
                                 </div>
                                 <div>
                                     {sessionUser && sessionUser.id === review.User.id &&
                                         <>
                                         {/* <button type='button' onClick={() => handleEdit(review.id)}>Edit</button> */}
-                                        <button onClick={() => handleDelete(review.id)}>Delete</button>
+                                        <button className='reviewDelete' onClick={() => handleDelete(review.id)}>Delete Comment</button>
                                     </>
                                     }
                                 </div>

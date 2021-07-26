@@ -29,7 +29,13 @@
     align-items: center;
     height: 50px;
     font-size: 30px;
-    width: 1440px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.deleteUserBooking:hover {
+    background-color: red;
+    transition: .1s;
 }
 
 .noBookingsMessage {

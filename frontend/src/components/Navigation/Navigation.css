@@ -7,11 +7,11 @@
     font-size: 20px;
     text-decoration: none;
     justify-content: space-between;
+    border-radius: 8px;
 }
 
 .nav:hover {
     background-color: red;
-    border-radius: 15px;
     transition: .1s;
 }
 
@@ -42,10 +42,11 @@ img {
     justify-content: space-between;
     background-color: #1c1e1f;
     border: none;
+    border-radius: 8px;
+
 }
 
 .loginButton:hover {
     background-color: red;
-    border-radius: 15px;
     transition: .1s;
 }

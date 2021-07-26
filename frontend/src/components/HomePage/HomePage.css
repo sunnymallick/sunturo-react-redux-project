@@ -54,11 +54,10 @@ body {
     justify-content: space-between;
     background-color: #1c1e1f;
     border: none;
+    border-radius: 8px;
 }
 
 .browseButton:hover {
     background-color: red;
     transition: .1s;
 }
-
-

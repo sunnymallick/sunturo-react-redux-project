@@ -21,6 +21,7 @@ const VehiclesPage = () => {
                     return (
                     <div>
                         <Link key={vehicle.id} to={`/vehicles/${vehicle.id}`}>
+                            <img src={vehicle.vehicleImg} alt='vehiclepic' />
                             <h5>{vehicle.year} {vehicle.make} {vehicle.model}</h5>
                         </Link>
                     </div>

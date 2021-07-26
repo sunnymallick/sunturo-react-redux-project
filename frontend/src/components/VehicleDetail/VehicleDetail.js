@@ -100,6 +100,7 @@ const VehicleDetail = () => {
     return (
         <>
        <div>
+            <img src={vehicle.vehicleImg} alt='vehiclepic' />
             <p>The car: {vehicle?.year} {vehicle?.make} {vehicle?.model}</p>
 
             <p>Hosted by {vehicle?.User.username} </p>

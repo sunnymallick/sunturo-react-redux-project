@@ -9,9 +9,12 @@ const HomePage = () => {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
+            <>
+            <h5>Find your adventure here. Click the link below to browse our selection.</h5>
             <Link to='/vehicles'>
-                <button type='button'>Click here to browse our selection</button>
+                <button type='button'>Browse Listings</button>
             </Link>
+            </>
         )
     } else {
         sessionLinks = (
@@ -31,7 +34,7 @@ const HomePage = () => {
                     {sessionLinks}
                 </div>
                 <div className='homeImage'>
-                    <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images/shelby-homepage.jpg' alt='shelby' />
+                    <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/p1.jpeg' alt='shelby' />
                 </div>
 
 

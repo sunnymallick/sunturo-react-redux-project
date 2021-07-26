@@ -55,6 +55,11 @@ body {
     padding-left: 20px;
     border-radius: 8px;
 }
+
+.browseButton:hover {
+    background-color: red;
+    transition: .1s;
+}
 /* .title {
     display: inline-block;
     flex-basis: 50%;

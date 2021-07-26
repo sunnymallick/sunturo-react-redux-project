@@ -23,7 +23,6 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
     <>
-        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo' className='nav'/>
         <NavLink className='nav' to='/'>Home</NavLink>
         <NavLink className='nav' to={`/${sessionUser.id}/bookings`}>Your Bookings</NavLink>
         <NavLink className='nav' to='/vehicles'>Vehicles</NavLink>
@@ -33,9 +32,8 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
-        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
         <NavLink className='nav' to='/'>Home</NavLink>
-        <LoginFormModal className='nav' />
+        <LoginFormModal />
         <NavLink className='nav' to="/signup">Sign Up</NavLink>
       </>
     );
@@ -45,6 +43,7 @@ const Navigation = ({ isLoaded }) => {
     <div className='navbar'>
     <ul>
       <li>
+        <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/Screen+Shot+2021-07-25+at+10.21.50+PM.png' alt='logo'/>
         {isLoaded && sessionLinks}
       </li>
     </ul>

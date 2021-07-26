@@ -10,7 +10,7 @@ const HomePage = () => {
     if (sessionUser) {
         sessionLinks = (
             <>
-            <h5>Find your adventure here. Click the link below to browse our selection.</h5>
+            <h3>Find your adventure here. Click the link below to browse our selection.</h3>
             <Link to='/vehicles'>
                 <button type='button'>Browse Listings</button>
             </Link>
@@ -27,17 +27,12 @@ const HomePage = () => {
     return (
         <>
             <div className='homeContainer'>
-                <div className='homeTitle'>
-                    <p>Welcome to SunTuro!</p>
-
+                <div className='homeInfo'>
                     <h3>The World's Smallest Car Sharing Marketplace </h3>
+                </div>
+                <div className='homeLinks'>
                     {sessionLinks}
                 </div>
-                <div className='homeImage'>
-                    <img src='https://sunny-website-clone.s3.us-west-1.amazonaws.com/images-for-website/background-images/p1.jpeg' alt='shelby' />
-                </div>
-
-
             </div>
         </>
     )

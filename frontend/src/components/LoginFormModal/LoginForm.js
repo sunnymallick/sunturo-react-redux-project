@@ -29,13 +29,12 @@ const LoginFormPage = () => {
   return (
     <>
       <div className='loginPage'>
-          <form onSubmit={handleSubmit}>
-            <div className='loginContainer'>
+          <form onSubmit={handleSubmit} className='loginForm'>
             <ul>
-              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              {errors.map((error, idx) => <li className='errorList' key={idx}>{error}</li>)}
             </ul>
-            <label>
-              Username or Email
+            <label className='userLabel'>
+              Username or Email:
               <input
                 type="text"
                 className='login'
@@ -44,8 +43,8 @@ const LoginFormPage = () => {
                 required
               />
             </label>
-            <label>
-              Password
+            <label className='passwordLabel'>
+              Password:
               <input
                 type="password"
                 className='login'
@@ -54,8 +53,7 @@ const LoginFormPage = () => {
                 required
               />
             </label>
-            </div>
-            <button type="submit">Log In</button>
+            <button className='loginSubmit' type="submit">Log In</button>
           </form>
       </div>
     </>

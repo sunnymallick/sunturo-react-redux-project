@@ -10,7 +10,7 @@ const HomePage = () => {
     if (sessionUser) {
         sessionLinks = (
             <>
-            <h3>Find your adventure here. Click the link below to browse our selection.</h3>
+            <h3>Find your next adventure here. Click the link below to browse our selection.</h3>
             <Link to='/vehicles'>
                 <button className='browseButton' type='button'>Browse Listings</button>
             </Link>

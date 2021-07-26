@@ -26,7 +26,7 @@ body {
     margin: 20px;
     text-align: center;
     font-size: 40px;
-    padding-top: 30px;
+    padding-top: 50px;
     color: white;
     /* text-shadow: 0 0 3px black */
 }
@@ -37,13 +37,13 @@ body {
     font-size: 25px;
     justify-content: flex-start;
     padding-left: 100px;
-    padding-top: 200px;
+    padding-top: 180px;
     padding-right: 980px;
     align-items: center;
 }
 
 .browseButton {
-    background-color: black;
+    background-color: #1c1e1f;
     border: none;
     color: white;
     padding: 20px;

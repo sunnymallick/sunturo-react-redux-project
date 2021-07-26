@@ -89,7 +89,7 @@ const VehicleDetail = () => {
                 )
         } else {
             sessionLinks = (
-            <p>This vehicle has an age restriction.</p>
+            <p className='ageRestrictionNotice'>This vehicle has an age restriction.</p>
         )
     }
 }

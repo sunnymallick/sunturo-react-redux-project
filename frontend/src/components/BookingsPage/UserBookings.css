@@ -2,6 +2,7 @@
     color: white;
     background-color: #1c1e1f;
     padding: 20px;
+    font: 30px;
 }
 
 .userBookingsContainer {
@@ -29,4 +30,12 @@
     height: 50px;
     font-size: 30px;
     width: 1440px;
+}
+
+.noBookingsMessage {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 50px;
+    background-color: #1c1e1f;
 }

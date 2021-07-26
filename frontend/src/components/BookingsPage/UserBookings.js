@@ -26,7 +26,7 @@ const UserBookings = () => {
     let content;
     if (!listingBookings.length) {
         content = (
-            <p>You currently do not have any bookings.</p>
+            <p className='noBookingsMessage'>You currently do not have any bookings. Check out our listings!</p>
         )
     } else {
         content = (

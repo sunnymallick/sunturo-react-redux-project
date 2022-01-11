@@ -11,9 +11,9 @@ const VehicleDetail = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    const vehicle = useSelector((state) => state.vehicles[id])
+    const vehicle = useSelector(state => state.vehicles[id])
     const sessionUser = useSelector(state => state.session.user);
-    const reviews = useSelector((state) => ((Object.values(state.reviews))))
+    const reviews = useSelector(state => ((Object.values(state.reviews))))
     const listingReviews = reviews.filter(review => review?.Vehicle?.id === +id);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(5);

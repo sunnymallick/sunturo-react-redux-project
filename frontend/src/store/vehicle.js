@@ -29,9 +29,9 @@ export const getVehicles = () => async (dispatch) => {
 
 export const getOneVehicle = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/vehicles/${id}`)
-
+    
+    const oneVehicle = await res.json();
     if (res.ok) {
-        const oneVehicle = await res.json();
         dispatch(loadOne(oneVehicle))
     }
 }
@@ -48,6 +48,13 @@ const vehiclesReducer = (state = {}, action) => {
                 allVehicles[vehicle.id] = vehicle;
             });
             return allVehicles;
+        }
+        case LOAD_ONE: {
+            const newState = {
+                ...state,
+                [action.vehicle?.id]: action.vehicle
+            }
+            return newState
         }
         default:
             return state;

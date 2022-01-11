@@ -26,11 +26,14 @@ const VehicleDetail = () => {
             review,
             rating
         }
-        let createdReview = await dispatch(reviewVehicle(id, payload))
-
-        if (createdReview) {
-            history.push(`/vehicles`)
+        if (review) {
+            const createdReview = await dispatch(reviewVehicle(id, payload))
+            if (createdReview) {
+                dispatch(getReviews())
+                setReview('')
+            }
         }
+
     }
 
     // const handleEdit = async (e) => {
@@ -48,10 +51,6 @@ const VehicleDetail = () => {
 
     const handleDelete = (id) => {
         dispatch(removeReview(id))
-        history.push(`/vehicles`)
-        // if(deletedComment) {
-        //     history.push(`/vehicles`)
-        // }
     }
 
 

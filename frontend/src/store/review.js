@@ -60,11 +60,14 @@ export const editReview = (id, payload) => async (dispatch) => {
 }
 
 export const removeReview = (id) => async (dispatch) => {
-    const deleted = await csrfFetch(`/api/reviews/${id}`, {
+    const res = await csrfFetch(`/api/reviews/${id}`, {
         method: 'DELETE',
     })
-        dispatch(destroyReview())
-        return deleted;
+    if (res.ok) {
+        await res.json()
+        dispatch(destroyReview(id))
+    }
+    return res
 }
 
 let initialState = {}

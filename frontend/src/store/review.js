@@ -1,9 +1,8 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD = 'reviews/LOAD'
-const SET_REVIEW = 'reviews/SET_REVIEW'
-const UPDATE = 'review/UPDATE'
-const DELETE = 'review/DELETE'
+const LOAD = 'reviews/LOAD_REVIEWS'
+const CREATE_REVIEW = 'reviews/CREATE_REVIEW'
+const DESTROY = 'review/DESTROY_REVIEW'
 
 
 const loadReviews = (reviews) => ({
@@ -11,18 +10,15 @@ const loadReviews = (reviews) => ({
     reviews
 })
 
-const setReview = (reviews) => ({
-    type: SET_REVIEW,
-    reviews
-})
-
-const updateReview = (review) => ({
-    type: UPDATE,
+const placeReview = (review) => ({
+    type: CREATE_REVIEW,
     review
 })
 
-const deleteReview = () => ({
-    type: DELETE
+
+const destroyReview = (reviewId) => ({
+    type: DESTROY_REVIEW,
+    reviewId
 })
 
 export const getReviews = (id) => async (dispatch) => {
@@ -44,7 +40,7 @@ export const reviewVehicle = (id, payload) => async (dispatch) => {
 
     if (res.ok) {
         const newReview = await res.json();
-        dispatch(setReview(newReview))
+        dispatch(placeReview(newReview))
         return newReview;
     }
 }
@@ -67,16 +63,18 @@ export const removeReview = (id) => async (dispatch) => {
     const deleted = await csrfFetch(`/api/reviews/${id}`, {
         method: 'DELETE',
     })
-        dispatch(deleteReview())
+        dispatch(destroyReview())
         return deleted;
 }
 
-const initialState = {}
+let initialState = {}
 
 const reviewReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD: {
-            const allReviews = {};
+            const allReviews = {
+                ...state,
+            };
             action.reviews.forEach((review) => {
                 allReviews[review.id] = review
             });
@@ -85,20 +83,14 @@ const reviewReducer = (state = initialState, action) => {
         case SET_REVIEW: {
             const newState = {
                 ...state,
-                [action.reviews.id]: action.reviews
+                [action.review.id]: action.review
             }
             return newState
         }
-        case UPDATE: {
-            return {
-                ...state,
-                [action.review.id]: action.reviews
-            }
-        }
 
-        case DELETE: {
+        case DESTROY: {
             const newState = {...state};
-            delete newState[action.reviewId];
+                delete newState[action.reviewId];
             return newState;
         }
 

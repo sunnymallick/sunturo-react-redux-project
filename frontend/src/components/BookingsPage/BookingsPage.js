@@ -29,6 +29,12 @@ const BookingsPage = () => {
         }
     }
 
+    const selectionRange = {
+        startDate: startDate,
+        endDate: endDate,
+        key: 'selection',
+    }
+
     const updateStartDate = (e) => setStartDate(e.target.value)
     const updateEndDate = (e) => setEndDate(e.target.value)
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setupBooking } from '../../store/booking';
 import { useHistory } from 'react-router-dom';
+import ReactDatePicker from 'react-datepicker';
 import './BookingsPage.css';
 
 
@@ -11,7 +12,6 @@ const BookingsPage = () => {
     const { id } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id
-    console.log(userId)
     const vehicle = useSelector((state) => state.vehicles[id])
     const history = useHistory();
     const [startDate, setStartDate] = useState('')

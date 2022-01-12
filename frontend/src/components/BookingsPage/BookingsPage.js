@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setupBooking } from '../../store/booking';
 import { useHistory } from 'react-router-dom';
-import ReactDatePicker from 'react-datepicker';
 import './BookingsPage.css';
 
 
@@ -14,7 +13,7 @@ const BookingsPage = () => {
     const userId = sessionUser.id
     const vehicle = useSelector((state) => state.vehicles[id])
     const history = useHistory();
-    const [startDate, setStartDate] = useState('')
+    const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState('')
 
     const handleSubmit = async (e) => {
@@ -30,6 +29,9 @@ const BookingsPage = () => {
         }
     }
 
+    const updateStartDate = (e) => setStartDate(e.target.value)
+    const updateEndDate = (e) => setEndDate(e.target.value)
+
     return (
         <>
         <div className='bookingForm'>
@@ -40,7 +42,7 @@ const BookingsPage = () => {
                         type='datetime-local'
                         placeholder='From'
                         value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
+                        onChange={updateStartDate}
                         className='dateInput'
                         required/>
                 <label className='bookingDate'>Trip End:</label>
@@ -48,7 +50,7 @@ const BookingsPage = () => {
                         type='datetime-local'
                         placeholder='To'
                         value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                        onChange={updateEndDate}
                         className='dateInput'
                         required/>
                     <button type='submit'>Place Booking</button>
